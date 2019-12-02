@@ -1,4 +1,4 @@
-package com.codecool.shop.shop;
+package com.codecool.shop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
