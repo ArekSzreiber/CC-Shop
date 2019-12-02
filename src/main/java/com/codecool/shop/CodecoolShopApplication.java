@@ -1,4 +1,4 @@
-package com.codecool.shop.shop;
+package com.codecool.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
