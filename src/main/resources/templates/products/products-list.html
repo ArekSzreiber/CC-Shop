@@ -6,5 +6,9 @@
 
 <body>
 <h1>This is Products list</h1>
+<ul th:each="product: ${products}">
+    <!--/*@thymesVar id="id"*/-->
+    <li th:text="${product.id}"></li>
+</ul>
 </body>
 </html>
