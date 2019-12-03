@@ -28,10 +28,10 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public String addNewCourse(@Valid @ModelAttribute("course") Product product,
+    public String addProduct(@Valid @ModelAttribute("product") Product product,
                                BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/products";
+            return "redirect:/";
         } else {
             productService.save(product);
             return "redirect:/";
