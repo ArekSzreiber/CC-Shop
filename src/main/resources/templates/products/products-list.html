@@ -14,7 +14,7 @@
 
 <table class="table">
     <tr>
-        <th scope="col">Name</th>
+        <th scope="col">Title</th>
         <th scope="col">Price</th>
         <th scope="col">Image</th>
         <th scope="col">Properties</th>
@@ -25,7 +25,7 @@
 
     </tr>
     <tr th:each="product: ${products}">
-        <th class="align-middle" scope="row" th:text="${product.name}"></th>
+        <th class="align-middle" scope="row" th:text="${product.title}"></th>
         <td class="align-middle" th:text="${product.price}">$</td>
         <td class="align-middle">
             <img class="image"

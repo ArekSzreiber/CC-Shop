@@ -19,7 +19,7 @@ public class Product {
 
     @Column
     @NotEmpty
-    private String name;
+    private String title;
 
     @Column
     private BigDecimal price;
