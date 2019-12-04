@@ -18,20 +18,20 @@ public class Product {
     @Column
     private int id;
 
-    @Column(name = "name")
+    @Column
     @NotEmpty
     private String name;
 
-    @Column(name = "price")
+    @Column
     private BigDecimal price;
 
     @Column(name = "image_url")
     private String imageURL;
 
-    @Column(name = "properties")
+    @Column
     private String properties;
 
-    @Column(name = "description")
+    @Column
     private String description;
 
 /*

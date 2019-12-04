@@ -21,20 +21,28 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/products")
     public String showProductsList(Model model) {
         model.addAttribute("products", productService.getAllProducts());
         return "products/products-list";
+    }
+
+    //adding new product form
+    @GetMapping("/products/add-product-form")
+    public String addProductForm(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "products/products-form";
     }
 
     @PostMapping("/products")
     public String addProduct(@Valid @ModelAttribute("product") Product product,
                                BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/";
+            return "redirect:/products/add-product-form";
         } else {
             productService.save(product);
-            return "redirect:/";
+            return "redirect:/products";
         }
     }
 
