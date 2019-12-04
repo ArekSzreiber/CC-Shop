@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -22,22 +23,44 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/products")
     public String showProductsList(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         return "products/products-list";
     }
 
-    @PostMapping("/products")
+    //adding new product form
+    @GetMapping("/products/add-product-form")
+    public String addProductForm(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "products/products-form";
+    }
+
+    @PostMapping("/products/add")
     public String addProduct(@Valid @ModelAttribute("product") Product product,
                              BindingResult result) {
         if (result.hasErrors()) {
-            return "redirect:/";
+            return "redirect:/products/add-product-form";
         } else {
             productService.save(product);
-            return "redirect:/";
+            return "redirect:/products";
         }
+    }
+
+    @GetMapping("/products/delete")
+    public String delete(@RequestParam("id") int id) {
+        productService.deleteById(id);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products/edit")
+    public String showFormForEditMedicine(@RequestParam("id") int id,
+                                          Model theModel) {
+        Product product = (Product) productService.findById(id);
+        theModel.addAttribute("product", product);
+        return "products/products-form";
     }
 
 }
