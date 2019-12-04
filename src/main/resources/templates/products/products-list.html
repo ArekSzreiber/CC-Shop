@@ -2,18 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/css/products-list.css}">
 </head>
 
 <body>
 <h1>This is Products list</h1>
-<!--<ul th:each="product: ${products}">-->
-    <!--&lt;!&ndash;/*@thymesVar id="id"*/&ndash;&gt;-->
-    <!--<li th:text="${product.name}"></li>-->
-<!--</ul>-->
 
-<table class="table" >
+<table class="table">
     <tr>
         <th scope="col">Name</th>
         <th scope="col">Price</th>
@@ -26,16 +25,21 @@
     <tr th:each="product: ${products}">
         <th class="align-middle" scope="row" th:text="${product.name}"></th>
         <td class="align-middle" th:text="${product.price}">$</td>
-        <td class="align-middle"><img class="image" src="https://militaria-shop.pl/media/cache/xlarge/1ee91cc6648762a100f42d597b23c0047931c3f9.jpeg"></td>
-        <th class="align-middle">    <a class="btn btn-primary mb-3 mt-3" th:href="@{/products/edit(id=${product.id})}">Edit</a>
-        <th class="align-middle">    <a class="btn btn-danger mb-3 mt-3" th:href="@{/products/delete(id=${product.id})}">Delete</a>
+        <td class="align-middle"><img class="image"
+                                      src="https://militaria-shop.pl/media/cache/xlarge/1ee91cc6648762a100f42d597b23c0047931c3f9.jpeg">
+        </td>
+        <th class="align-middle"><a class="btn btn-primary mb-3 mt-3"
+                                    th:href="@{/products/edit(id=${product.id})}">Edit</a>
+        <th class="align-middle"><a class="btn btn-danger mb-3 mt-3"
+                                    th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
         </th>
     </tr>
 </table>
 
 <br>
 <div class="container">
-    <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add-product-form}">Add new product</a>
+    <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add-product-form}">Add new
+        product</a>
 </div>
 
 </body>
