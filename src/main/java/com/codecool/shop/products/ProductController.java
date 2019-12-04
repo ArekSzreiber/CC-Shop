@@ -36,7 +36,7 @@ public class ProductController {
         return "products/products-form";
     }
 
-    @PostMapping("/products")
+    @PostMapping("/products/add")
     public String addProduct(@Valid @ModelAttribute("product") Product product,
                                BindingResult result) {
         if (result.hasErrors()) {

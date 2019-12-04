@@ -10,7 +10,7 @@
 <h1>Add new product:</h1>
 
 <div class="container">
-<form action="#" th:action="@{/products}" th:object="${product}" method="POST">
+<form action="#" th:action="@{/products/add}" th:object="${product}" method="POST">
     Name:<br>
     <input type="text" th:field="*{name}" name="firstname" placeholder="name"><br>
     Price in $:<br>
