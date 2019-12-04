@@ -1,5 +1,6 @@
 package com.codecool.shop.products;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 
@@ -10,6 +11,7 @@ class ProductServiceImplTest {
     @Mock
     ProductRepository mockRepository;
 
+    @Disabled
     @Test
     void getAllProducts() {
         ProductServiceImpl psi = new ProductServiceImpl(mockRepository);
