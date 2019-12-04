@@ -1,5 +1,6 @@
 package com.codecool.shop.products;
 
+import com.codecool.shop.product.category.ProductCategory;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 @Component
 @Entity
-@Table(name = "product", schema = "public")
+@Table(schema = "public")
 public class Product {
 
     @Id
@@ -32,4 +33,8 @@ public class Product {
 
     @Column
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private ProductCategory productCategory;
 }
