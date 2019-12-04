@@ -10,37 +10,26 @@ import java.math.BigDecimal;
 @Data
 @Component
 @Entity
-@Table
+@Table(name = "product", schema = "public")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int id;
+    private Integer id;
 
-    @Column(name = "name")
+    @Column
     @NotEmpty
     private String name;
 
-    @Column(name = "price")
+    @Column
     private BigDecimal price;
 
     @Column(name = "image_url")
     private String imageURL;
 
-    @Column(name = "properties")
+    @Column
     private String properties;
 
-    @Column(name = "description")
+    @Column
     private String description;
-
-/*
-    @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
-    private Category category;*/
-
-/*  @ManyToOne
-    @JoinColumn(name = "supplier_d", referencedColumnName = "supplier_id", insertable = false, updatable = false)
-    private Supplier supplier;*/
-
 }
