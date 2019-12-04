@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 
@@ -23,13 +24,14 @@ public class ProductController {
 
     @GetMapping("/")
     public String showProductsList(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         return "products/products-list";
     }
 
     @PostMapping("/products")
     public String addProduct(@Valid @ModelAttribute("product") Product product,
-                               BindingResult result) {
+                             BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/";
         } else {
