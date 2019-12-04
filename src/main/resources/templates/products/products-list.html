@@ -17,6 +17,8 @@
         <th scope="col">Name</th>
         <th scope="col">Price</th>
         <th scope="col">Image</th>
+        <th scope="col">Properties</th>
+        <th scope="col">Description</th>
         <th scope="col"></th>
         <th scope="col"></th>
 
@@ -30,6 +32,9 @@
                  th:src="${product.imageURL}"
             >
         </td>
+        <td class="align-middle" th:text="${product.properties}">$</td>
+        <td class="align-middle" th:text="${product.description}">$</td>
+
         <th class="align-middle"><a class="btn btn-primary mb-3 mt-3"
                                     th:href="@{/products/edit(id=${product.id})}">Edit</a>
         <th class="align-middle"><a class="btn btn-danger mb-3 mt-3"
