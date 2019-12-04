@@ -9,4 +9,6 @@ public interface ProductService {
     List<Product> getAllProducts();
 
     void save(Product product);
+
+    void deleteById(int id);
 }
