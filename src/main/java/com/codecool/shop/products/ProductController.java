@@ -53,4 +53,12 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @GetMapping("/products/edit")
+    public String showFormForEditMedicine(@RequestParam("id") int id,
+                                          Model theModel) {
+        Product product = (Product) productService.findById(id);
+        theModel.addAttribute("product", product);
+        return "products/products-form";
+    }
+
 }
