@@ -1,6 +1,6 @@
 package com.codecool.shop.products;
 
-import com.codecool.shop.product.category.ProductCategory;
+import com.codecool.shop.productCategories.ProductCategory;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

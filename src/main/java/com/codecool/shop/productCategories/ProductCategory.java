@@ -1,4 +1,4 @@
-package com.codecool.shop.product.category;
+package com.codecool.shop.productCategories;
 
 import com.codecool.shop.products.Product;
 import lombok.Data;
@@ -23,6 +23,6 @@ public class ProductCategory {
     private String name;
 
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productCategory")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productCategories")
     private List<Product> products;
 }

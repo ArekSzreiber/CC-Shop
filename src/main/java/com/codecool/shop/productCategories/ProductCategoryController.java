@@ -1,4 +1,4 @@
-package com.codecool.shop.product.category;
+package com.codecool.shop.productCategories;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

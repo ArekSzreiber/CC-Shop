@@ -1,4 +1,4 @@
-package com.codecool.shop.product.category;
+package com.codecool.shop.productCategories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
