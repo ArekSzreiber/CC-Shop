@@ -26,7 +26,6 @@ public class ProductController {
         return "products/products-list";
     }
 
-    //adding new product form
     @GetMapping("/products/add-product-form")
     public String addProductForm(Model model) {
         Product product = new Product();
@@ -53,9 +52,9 @@ public class ProductController {
 
     @GetMapping("/products/edit")
     public String showFormForEditMedicine(@RequestParam("id") int id,
-                                          Model theModel) {
+                                          Model model) {
         Product product = productService.findById(id);
-        theModel.addAttribute("product", product);
+        model.addAttribute("product", product);
         return "products/products-form";
     }
 

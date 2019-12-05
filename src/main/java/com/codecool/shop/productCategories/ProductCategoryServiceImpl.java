@@ -21,13 +21,13 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
     }
 
     @Override
-    public void save(ProductCategory product) {
-        throw new RuntimeException("Not implemented");
+    public void save(ProductCategory productCategory) {
+        productCategoryRepository.save(productCategory);
     }
 
     @Override
     public void deleteById(int id) {
-        throw new RuntimeException("Not implemented");
+        productCategoryRepository.deleteById(id);
     }
 
     @Override

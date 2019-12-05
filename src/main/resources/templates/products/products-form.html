@@ -11,6 +11,7 @@
 
 <div class="container">
 <form action="#" th:action="@{/products/add}" th:object="${product}" method="POST">
+    <input type="hidden" th:field="*{id}"/>
     Name:<br>
     <input type="text" th:field="*{title}" name="title" placeholder="Product title"><br>
     Price in $:<br>
