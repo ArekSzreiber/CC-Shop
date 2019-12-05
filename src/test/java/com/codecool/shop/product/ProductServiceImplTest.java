@@ -1,4 +1,4 @@
-package com.codecool.shop.products;
+package com.codecool.shop.product;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

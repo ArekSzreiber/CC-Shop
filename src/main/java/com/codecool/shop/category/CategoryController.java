@@ -1,4 +1,4 @@
-package com.codecool.shop.productCategories;
+package com.codecool.shop.category;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,34 +10,34 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class ProductCategoryController {
-    private ProductCategoryService categoryService;
+public class CategoryController {
+    private CategoryService categoryService;
 
-    public ProductCategoryController(@Qualifier("productCategoryServiceImpl") ProductCategoryService categoryService) {
+    public CategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping("/categories")
     public String showCategories(Model model) {
-        List<ProductCategory> categories = categoryService.getAllCategories();
+        List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "categories/categories-list";
     }
 
     @GetMapping("/categories/add")
     public String addCategoryForm(Model model) {
-        ProductCategory productCategory = new ProductCategory();
-        model.addAttribute("productCategory", productCategory);
+        Category category = new Category();
+        model.addAttribute("productCategory", category);
         return "categories/categories-form";
     }
 
     @PostMapping("/categories/add")
-    public String addCategory(@Valid @ModelAttribute("category") ProductCategory productCategory,
+    public String addCategory(@Valid @ModelAttribute("category") Category category,
                              BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/products/add";
         } else {
-            categoryService.save(productCategory);
+            categoryService.save(category);
             return "redirect:/categories";
         }
     }
@@ -51,8 +51,8 @@ public class ProductCategoryController {
     @GetMapping("/categories/edit")
     public String editCategory(@RequestParam("id") int id,
                                           Model model) {
-        ProductCategory productCategory = categoryService.findById(id);
-        model.addAttribute("productCategory", productCategory);
+        Category category = categoryService.findById(id);
+        model.addAttribute("productCategory", category);
         return "categories/categories-form";
     }
 

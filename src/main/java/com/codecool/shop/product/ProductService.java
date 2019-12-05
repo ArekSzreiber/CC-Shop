@@ -1,4 +1,4 @@
-package com.codecool.shop.products;
+package com.codecool.shop.product;
 
 import org.springframework.stereotype.Service;
 

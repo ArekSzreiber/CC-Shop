@@ -1,6 +1,6 @@
-package com.codecool.shop.productCategories;
+package com.codecool.shop.category;
 
-import com.codecool.shop.products.Product;
+import com.codecool.shop.product.Product;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 @Entity
 @Table(schema = "public")
-public class ProductCategory {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
