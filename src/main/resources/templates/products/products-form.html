@@ -24,6 +24,10 @@
     <input type="text" name="properties" th:field="*{properties}" placeholder="properties"><br>
     Description:<br>
     <input type="text" name="description" th:field="*{description}" placeholder="description"><br>
+    Category:
+    <select name="cars" th:field="*{category}">
+        <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select><br>
     <input type="submit" class="btn btn-outline-primary col-4  " value="ZAPISZ">
 </form>
 </div>

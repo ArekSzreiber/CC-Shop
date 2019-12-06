@@ -1,5 +1,7 @@
 package com.codecool.shop.product;
 
+import com.codecool.shop.category.Category;
+import com.codecool.shop.category.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +15,12 @@ import java.util.List;
 public class ProductController {
 
     private ProductService productService;
+    private CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/products")
@@ -26,10 +30,12 @@ public class ProductController {
         return "products/products-list";
     }
 
-    @GetMapping("/products/add-product-form")
+    @GetMapping("/products/add")
     public String addProductForm(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "products/products-form";
     }
 
