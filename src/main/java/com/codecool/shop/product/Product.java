@@ -35,7 +35,7 @@ public class Product {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
     //zostawiam to jako przykład, do usunięcia z czasem

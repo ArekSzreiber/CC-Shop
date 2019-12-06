@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -27,6 +28,11 @@ public class ProductController {
     public String showProductsList(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
+        List<String> categories = new ArrayList<>();
+        for (Product product: products) {
+            categories.add(product.getCategory().getName());
+        }
+        model.addAttribute("categories", categories);
         return "products/products-list";
     }
 
