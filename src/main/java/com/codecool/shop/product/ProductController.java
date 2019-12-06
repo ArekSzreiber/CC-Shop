@@ -28,11 +28,6 @@ public class ProductController {
     public String showProductsList(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        List<String> categories = new ArrayList<>();
-        for (Product product: products) {
-            categories.add(product.getCategory().getName());
-        }
-        model.addAttribute("categories", categories);
         return "products/products-list";
     }
 
