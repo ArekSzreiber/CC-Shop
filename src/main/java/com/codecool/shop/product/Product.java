@@ -47,4 +47,16 @@ public class Product {
 /*  @ManyToOne
     @JoinColumn(name = "supplier_d", referencedColumnName = "supplier_id", insertable = false, updatable = false)
     private Supplier supplier;*/
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", price=" + price +
+                ", imageURL='" + imageURL + '\'' +
+                ", properties='" + properties + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }

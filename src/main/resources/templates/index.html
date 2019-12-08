@@ -6,6 +6,18 @@
 <body>
 <div>
     <h1>&lt;This is index page&gt;</h1>
+    <ol th:each="category: ${categories}">
+        <li>
+            <span th:text="*{category.name}"></span>
+            <ul th:each="product: *{category.products}">
+                <li th:text="*{product.title}">
+
+                </li>
+            </ul>
+        </li>
+
+
+    </ol>
 </div>
 </body>
 </html>
