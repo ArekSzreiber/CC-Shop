@@ -11,12 +11,7 @@
 
 <h1>Update category:</h1>
 
-<div class="container">
-    <form action="#" method="POST" th:action="@{/categories}" th:object="${category}">
-        <th:block th:include="categories/fragments :: inputs"/>
-    </form>
-    <th:block th:include="categories/fragments :: cancel"/>
-</div>
+<th:block th:include="categories/fragments :: form"/>
 
 </body>
 </html>
