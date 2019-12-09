@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/add")
-    public String addProductForm(Model model) {
+    public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categoryService.getAllCategories());
         return "products/product-form";
@@ -61,13 +61,13 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}/delete")
-    public String deleteProduct(@PathVariable int id) {
+    public String showDeleteProductForm(@PathVariable int id) {
         productService.deleteById(id);
         return "redirect:/products";
     }
 
     @GetMapping("/products/{id}/edit")
-    public String editProduct(@PathVariable int id, Model model) {
+    public String showEditProductForm(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         model.addAttribute("categories", categoryService.getAllCategories());
         return "products/product-form";
