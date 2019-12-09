@@ -42,18 +42,18 @@ public class ProductController {
 
     @GetMapping("/products/add")
     public String addProductForm(Model model) {
-        Product product = new Product();
-        model.addAttribute("product", product);
-        List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("categories", categories);
-        return "products/products-form";
+        model.addAttribute("product", new Product());
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "products/product-form";
     }
 
     @PostMapping("/products/add")
     public String addProduct(@Valid @ModelAttribute("product") Product product,
-                             BindingResult result) {
+                             BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "redirect:/products/add-product-form";
+            model.addAttribute("product", product);
+            model.addAttribute("categories", categoryService.getAllCategories());
+            return "products/product-form";
         } else {
             productService.save(product);
             return "redirect:/products";
@@ -70,7 +70,7 @@ public class ProductController {
     public String showFormForEditMedicine(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         model.addAttribute("categories", categoryService.getAllCategories());
-        return "products/products-form";
+        return "products/product-form";
     }
 
 }
