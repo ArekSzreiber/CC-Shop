@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<th:block th:fragment="form">
+    <div class="container">
+        <form action="#" method="POST" th:action="@{/categories}" th:object="${category}">
+            <input th:field="*{id}" type="hidden"/>
+            Category Name:<br>
+            <input name="name" placeholder="Category Name" th:field="*{name}" type="text"><br>
+            <input class="btn btn-outline-primary col-4  " type="submit" value="Save">
+        </form>
+        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Cancel</a>
+    </div>
+</th:block>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+
+<body>
+<h1>This is Products list</h1>
+
+<table class="table">
+    <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Image</th>
+        <th scope="col">Properties</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+
+
+    </tr>
+    <tr th:each="product: ${products}">
+        <td class="align-middle" scope="row" th:text="${product.title}"></td>
+        <td class="align-middle" th:text="${product.price}">$</td>
+        <td class="align-middle">
+            <img class="image"
+                 th:src="${product.imageURL}"
+            >
+        </td>
+        <td class="align-middle" th:text="${product.properties}"></td>
+        <td class="align-middle" th:text="${product.description}"></td>
+        <td class="align-middle" th:text="${#objects.nullSafe(product.category?.name,'')}"></td>
+
+        <td class="align-middle"><a class="btn btn-primary mb-3 mt-3"
+                                    th:href="@{/products/{id}/edit(id=${product.id})}">Edit</a>
+        <td class="align-middle"><a class="btn btn-danger mb-3 mt-3"
+                                    th:href="@{/products/{id}/delete(id=${product.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+<br>
+<div class="container">
+    <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add}">Add new
+        product</a>
+    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Categories</a>
+    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/}">Main page</a>
+
+</div>
+
+</body>
+</html>
