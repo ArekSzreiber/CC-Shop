@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -63,11 +66,10 @@ public class ProductController {
         return "redirect:/products";
     }
 
-    @GetMapping("/products/edit")
-    public String showFormForEditMedicine(@RequestParam("id") int id,
-                                          Model model) {
-        Product product = productService.findById(id);
-        model.addAttribute("product", product);
+    @GetMapping("/products/{id}/edit")
+    public String showFormForEditMedicine(@PathVariable int id, Model model) {
+        model.addAttribute("product", productService.findById(id));
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "products/products-form";
     }
 
