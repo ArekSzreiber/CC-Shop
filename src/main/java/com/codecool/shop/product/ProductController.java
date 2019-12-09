@@ -67,7 +67,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}/edit")
-    public String showFormForEditMedicine(@PathVariable int id, Model model) {
+    public String editProduct(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         model.addAttribute("categories", categoryService.getAllCategories());
         return "products/product-form";
