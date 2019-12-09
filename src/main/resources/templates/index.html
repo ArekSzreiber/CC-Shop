@@ -17,12 +17,12 @@
         <table class="table">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" th:text="'Category: ' + *{category.name}"></th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Image</th>
-                <th scope="col">Properties</th>
-                <th scope="col">Description</th>
+                <th class="category-name" scope="col" th:text="'Category: ' + *{category.name}"></th>
+                <th class="category-name" scope="col">Name</th>
+                <th class="category-name" scope="col">Price</th>
+                <th class="category-name" scope="col">Image</th>
+                <th class="category-name" scope="col">Properties</th>
+                <th class="category-name" scope="col">Description</th>
             </tr>
             </thead>
             <tr th:each="product: *{category.products}">

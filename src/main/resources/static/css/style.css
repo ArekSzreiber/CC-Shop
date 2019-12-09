@@ -1,3 +1,7 @@
 img.image{
     max-height: 120px;
 }
+
+th.category-name{
+    width: 200px;
+}
