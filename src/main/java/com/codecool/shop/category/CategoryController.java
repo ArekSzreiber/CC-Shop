@@ -47,7 +47,9 @@ public class CategoryController {
 
     @GetMapping("/categories/delete/{id}")
     public String deleteCategory(@PathVariable int id) {
-        categoryService.deleteById(id);
+        if (categoryService.findById(id).hasNoProduct()) {
+            categoryService.deleteById(id);
+        }
         return "redirect:/categories";
     }
 
