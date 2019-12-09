@@ -27,11 +27,7 @@ public class Category {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private List<Product> products;
 
-//    @Override
-//    public String toString() {
-//        return "Category{" +
-//                "id=" + id +
-//                ", name='" + name + '\'' +
-//                '}';
-//    }
+    public boolean hasNoProduct() {
+        return products.isEmpty();
+    }
 }

@@ -1,3 +1,7 @@
-img.image{
+img.image {
     max-height: 120px;
+}
+
+ol {
+    list-style-type: none;
 }
