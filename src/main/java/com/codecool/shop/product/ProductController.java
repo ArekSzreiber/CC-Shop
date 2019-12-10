@@ -29,7 +29,8 @@ public class ProductController {
     @GetMapping("/")
     public String showProductsByCategory(Model model) {
         List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("categories", categories);
+        model.addAttribute("currentCategories", categories);
+        model.addAttribute("allCategories", categories);
         return "index";
     }
 

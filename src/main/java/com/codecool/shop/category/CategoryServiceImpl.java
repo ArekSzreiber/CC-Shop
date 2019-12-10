@@ -1,5 +1,6 @@
 package com.codecool.shop.category;
 
+import com.codecool.shop.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,16 @@ public class CategoryServiceImpl implements CategoryService {
             return result.get();
         } else {
             throw new RuntimeException("Did not find product with id: " + id);
+        }
+    }
+
+    @Override
+    public List<Product> findAllProductsByCategoryId(int id) {
+        Optional<Category> result = categoryRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get().getProducts();
+        } else {
+            throw new RuntimeException("Did not find category with id: " + id);
         }
     }
 }

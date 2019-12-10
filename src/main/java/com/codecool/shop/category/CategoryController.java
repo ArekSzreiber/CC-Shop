@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -71,4 +72,11 @@ public class CategoryController {
         }
     }
 
+    @GetMapping("/categories/{id}/products")
+    public String showProductsByCategory(@PathVariable int id, Model model) {
+        model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("currentCategories", Collections.singletonList(categoryService.findById(id)));
+        model.addAttribute("products", categoryService.findAllProductsByCategoryId(id));
+        return "index";
+    }
 }

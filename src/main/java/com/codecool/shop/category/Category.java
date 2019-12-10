@@ -30,4 +30,8 @@ public class Category {
     public boolean hasNoProduct() {
         return products.isEmpty();
     }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
