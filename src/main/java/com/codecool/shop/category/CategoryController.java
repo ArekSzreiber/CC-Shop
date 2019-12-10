@@ -61,9 +61,11 @@ public class CategoryController {
         return "categories/category-update";
     }
 
-    @PostMapping("/categories/edit")
+    @PostMapping("/categories/edit")//TODO in my opinion renaming method name and changing mapping is wrong
+    //TODO "edit" is needless
+    //TODO "editCategory" is used also to add
     public String editCategory(@Valid @ModelAttribute Category category,
-                                 BindingResult result) {
+                               BindingResult result) {
         if (result.hasErrors()) {
             return "categories/category-update";
         } else {
