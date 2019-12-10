@@ -37,7 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException("Did not find product with id: " + id);
+            throw new RuntimeException("Did not find Product with id: " + id);
         }
     }
 
@@ -47,7 +47,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (result.isPresent()) {
             return result.get().getProducts();
         } else {
-            throw new RuntimeException("Did not find category with id: " + id);
+            throw new RuntimeException("Did not find Category with id: " + id);
         }
     }
 }

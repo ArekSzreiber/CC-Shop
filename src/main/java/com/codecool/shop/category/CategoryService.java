@@ -11,7 +11,7 @@ public interface CategoryService {
 
     List<Category> getAllCategories();
 
-    void save(Category product);
+    void save(Category category);
 
     void deleteById(int id);
 
