@@ -79,7 +79,7 @@ public class SupplierController {
         model.addAttribute("products", supplierService.findAllProductsBySupplierId(id));
         return "suppliers/products-by-supplier";
     }
-
+    //TODO this routing should be merged with index
     @GetMapping("/suppliers/all/products")
     public String showAllProductsBySupplier(Model model) {
         model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
