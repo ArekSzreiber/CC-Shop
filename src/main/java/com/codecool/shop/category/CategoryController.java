@@ -61,8 +61,8 @@ public class CategoryController {
         return "categories/category-update";
     }
 
-    @PostMapping("/categories")
-    public String addNewCategory(@Valid @ModelAttribute Category category,
+    @PostMapping("/categories/edit")
+    public String editCategory(@Valid @ModelAttribute Category category,
                                  BindingResult result) {
         if (result.hasErrors()) {
             return "categories/category-update";

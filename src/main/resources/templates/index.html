@@ -31,6 +31,7 @@
                 <tr>
                     <th class="category-name" scope="col" th:text="'Category: ' + *{category.name}"></th>
                     <th class="category-name" scope="col">Name</th>
+                    <th class="category-name" scope="col">Supplier</th>
                     <th class="category-name" scope="col">Price</th>
                     <th class="category-name" scope="col">Image</th>
                     <th class="category-name" scope="col">Properties</th>
@@ -40,6 +41,7 @@
                 <tr th:each="product: *{category.products}">
                     <td></td>
                     <td class="align-middle" scope="row" th:text="*{product.title}"></td>
+                    <td class="align-middle" th:text="*{product.supplier.name}"></td>
                     <td class="align-middle" th:text="*{product.price}">$</td>
                     <td class="align-middle">
                         <img class="image"
@@ -61,7 +63,8 @@
             product</a>
         <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Categories</a>
         <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/products}">Products</a>
-
+        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers/all/products}">Products by Supplier</a>
+        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers}">Suppliers</a>
     </div>
 </div>
 </body>

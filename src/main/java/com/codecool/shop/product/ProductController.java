@@ -2,6 +2,7 @@ package com.codecool.shop.product;
 
 import com.codecool.shop.category.Category;
 import com.codecool.shop.category.CategoryService;
+import com.codecool.shop.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,13 @@ public class ProductController {
 
     private ProductService productService;
     private CategoryService categoryService;
+    private SupplierService supplierService;
 
     @Autowired
-    public ProductController(ProductService productService, CategoryService categoryService) {
+    public ProductController(ProductService productService, CategoryService categoryService, SupplierService supplierService) {
         this.productService = productService;
         this.categoryService = categoryService;
+        this.supplierService = supplierService;
     }
 
     @GetMapping("/")
@@ -45,6 +48,7 @@ public class ProductController {
     public String showAddProductForm(Model model) {
         model.addAttribute("product", new Product());
         model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("suppliers", supplierService.getAllSuppliers());
         return "products/product-form";
     }
 
@@ -54,6 +58,7 @@ public class ProductController {
         if (result.hasErrors()) {
             model.addAttribute("product", product);
             model.addAttribute("categories", categoryService.getAllCategories());
+            model.addAttribute("suppliers", supplierService.getAllSuppliers());
             return "products/product-form";
         } else {
             productService.save(product);
@@ -71,6 +76,7 @@ public class ProductController {
     public String showEditProductForm(@PathVariable int id, Model model) {
         model.addAttribute("product", productService.findById(id));
         model.addAttribute("categories", categoryService.getAllCategories());
+        model.addAttribute("suppliers", supplierService.getAllSuppliers());
         return "products/product-form";
     }
 

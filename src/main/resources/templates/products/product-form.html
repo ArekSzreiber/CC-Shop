@@ -28,6 +28,10 @@
     <select name="cars" th:field="*{category}">
         <option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
     </select><br>
+    Supplier:
+    <select name="cars" th:field="*{supplier}">
+        <option th:each="supplier: ${suppliers}" th:value="${supplier.id}" th:text="${supplier.name}"></option>
+    </select><br>
     <input type="submit" class="btn btn-outline-primary col-4  " value="ZAPISZ">
 </form>
 </div>
