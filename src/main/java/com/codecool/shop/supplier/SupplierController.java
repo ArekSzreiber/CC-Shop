@@ -80,8 +80,9 @@ public class SupplierController {
     public String showProductsBySupplier(@PathVariable int id, Model model) {
         model.addAttribute("allCategories", categoryService.getAllCategories());
         model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
-        model.addAttribute("currentSuppliers", Collections.singletonList(supplierService.findById(id)));
-        model.addAttribute("products", supplierService.findAllProductsBySupplierId(id));
+
+        model.addAttribute("qualifier", "suppliers");
+        model.addAttribute("currentQualifiers", Collections.singletonList(supplierService.findById(id)));
         return "index";
     }
 

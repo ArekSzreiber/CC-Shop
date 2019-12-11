@@ -37,9 +37,11 @@ public class ProductController {
         model.addAttribute("allSuppliers", suppliers);
         //presence of those 2 ale XOR-like:
         if ("suppliers".equals(showBy)) {
-            model.addAttribute("currentSuppliers", suppliers);
+            model.addAttribute("qualifier", "suppliers");
+            model.addAttribute("currentQualifiers", suppliers);
         } else if ("categories".equals(showBy) || showBy == null || showBy.isEmpty()) {
-            model.addAttribute("currentCategories", categories);
+            model.addAttribute("qualifier", "categories");
+            model.addAttribute("currentQualifiers", categories);
         }
         return "index";
     }

@@ -69,8 +69,9 @@ public class CategoryController {
     public String showProductsByCategory(@PathVariable int id, Model model) {
         model.addAttribute("allCategories", categoryService.getAllCategories());
         model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
-        model.addAttribute("currentCategories", Collections.singletonList(categoryService.findById(id)));
-        model.addAttribute("products", categoryService.findAllProductsByCategoryId(id));
+
+        model.addAttribute("qualifier", "categories");
+        model.addAttribute("currentQualifiers", Collections.singletonList(categoryService.findById(id)));
         return "index";
     }
 }

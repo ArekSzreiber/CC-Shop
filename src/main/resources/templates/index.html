@@ -33,8 +33,7 @@
 
   <h1>This is index page</h1>
 
-  <th:block th:include="fragments :: products-list(${currentCategories})"/>
-  <th:block th:include="fragments :: products-list(${currentSuppliers})"/>
+  <th:block th:include="fragments :: products-list(${currentQualifiers}, ${qualifier})"/>
 
 
   <div class="container">
