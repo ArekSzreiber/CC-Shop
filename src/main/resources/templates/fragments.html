@@ -55,16 +55,12 @@
     </li>
 
 
-  </ol>
-
-
-  <div class="container">
-    <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add}">Add new
-      product</a>
-    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Categories</a>
-    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/products}">Products</a>
-    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers}">Suppliers</a>
-    <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/}">Main page</a>
+<th:block th:fragment="navigation">
+  <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/}">Main page</a>
+  <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/products}">Products</a>
+  <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Categories</a>
+  <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers}">Suppliers</a>
+</th:block>
 
   </div>
 </div>
