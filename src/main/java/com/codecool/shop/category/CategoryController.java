@@ -35,17 +35,6 @@ public class CategoryController {
         return "categories/category-add";
     }
 
-    @PostMapping("/categories/add")
-    public String addCategory(@Valid @ModelAttribute("category") Category category,
-                              BindingResult result) {
-        if (result.hasErrors()) {
-            return "redirect:/categories/add";
-        } else {
-            categoryService.save(category);
-            return "redirect:/categories";
-        }
-    }
-
     @GetMapping("/categories/delete/{id}")
     public String deleteCategory(@PathVariable int id) {
         if (categoryService.findById(id).hasNoProduct()) {
@@ -61,11 +50,9 @@ public class CategoryController {
         return "categories/category-update";
     }
 
-    @PostMapping("/categories/edit")//TODO in my opinion renaming method name and changing mapping is wrong
-    //TODO "edit" is needless
-    //TODO "editCategory" is used also to add
-    public String editCategory(@Valid @ModelAttribute Category category,
-                               BindingResult result) {
+    @PostMapping("/categories")
+    public String addOrUpdateCategory(@Valid @ModelAttribute Category category,
+                                      BindingResult result) {
         if (result.hasErrors()) {
             return "categories/category-update";
         } else {

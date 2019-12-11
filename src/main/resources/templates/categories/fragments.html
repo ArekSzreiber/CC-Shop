@@ -7,7 +7,7 @@
 
 <th:block th:fragment="form">
     <div class="container">
-        <form action="#" method="POST" th:action="@{/categories/edit}" th:object="${category}">
+        <form action="#" method="POST" th:action="@{/categories}" th:object="${category}">
             <input th:field="*{id}" type="hidden"/>
             Category Name:<br>
             <input name="name" placeholder="Category Name" th:field="*{name}" type="text"><br>
