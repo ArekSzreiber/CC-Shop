@@ -41,7 +41,7 @@
                 <tr th:each="product: *{category.products}">
                     <td></td>
                     <td class="align-middle" scope="row" th:text="*{product.title}"></td>
-                    <td class="align-middle" th:text="*{product.supplier.name}"></td>
+                    <td class="align-middle" th:text="${#objects.nullSafe(product?.supplier?.name,'')}"></td>
                     <td class="align-middle" th:text="*{product.price}">$</td>
                     <td class="align-middle">
                         <img class="image"
