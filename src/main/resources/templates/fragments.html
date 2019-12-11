@@ -2,58 +2,21 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <link crossorigin="anonymous"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        rel="stylesheet">
-  <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 </head>
-
 <body>
 
-<div class="sidenav">
-  <a href="/suppliers/all/products">All Suppliers</a>
-  <a th:each="supplier: ${allSuppliers}"
-     th:href="@{/suppliers/{id}/products(id=*{supplier.id})}"
-     th:text="*{supplier.name}"
-  >
-  </a>
-</div>
 
-<div class="main">
-
-
-  <h1>Products by Supplier</h1>
-  <ol th:each="supplier: ${currentSuppliers}">
-    <li>
-      <table class="table">
-        <thead class="thead-dark">
-        <tr>
-          <th class="category-name" scope="col" th:text="'Supplier: ' + *{supplier.name}"></th>
-          <th class="category-name" scope="col">Name</th>
-          <th class="category-name" scope="col">Category</th>
-          <th class="category-name" scope="col">Price</th>
-          <th class="category-name" scope="col">Image</th>
-          <th class="category-name" scope="col">Properties</th>
-          <th class="category-name" scope="col">Description</th>
-        </tr>
-        </thead>
-        <tr th:each="product: *{supplier.products}">
-          <td></td>
-          <td class="align-middle" scope="row" th:text="*{product.title}"></td>
-          <td class="align-middle" th:text="${#objects.nullSafe(product.category?.name,'')}"></td>
-          <td class="align-middle" th:text="*{product.price}">$</td>
-          <td class="align-middle">
-            <img class="image"
-                 th:src="*{product.imageURL}"
-            >
-          </td>
-          <td class="align-middle" th:text="*{product.properties}"></td>
-          <td class="align-middle" th:text="*{product.description}"></td>
-        </tr>
-      </table>
-    </li>
-
+<thead class="thead-dark" th:fragment="products-header">
+<tr>
+  <th class="category-name" scope="col" th:text="'Supplier: ' + *{supplier.name}"></th>
+  <th class="category-name" scope="col">Name</th>
+  <th class="category-name" scope="col">Category</th>
+  <th class="category-name" scope="col">Price</th>
+  <th class="category-name" scope="col">Image</th>
+  <th class="category-name" scope="col">Properties</th>
+  <th class="category-name" scope="col">Description</th>
+</tr>
+</thead>
 
 <th:block th:fragment="navigation">
   <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/}">Main page</a>
@@ -62,7 +25,5 @@
   <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers}">Suppliers</a>
 </th:block>
 
-  </div>
-</div>
 </body>
 </html>

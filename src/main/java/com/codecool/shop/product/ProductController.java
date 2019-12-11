@@ -2,15 +2,13 @@ package com.codecool.shop.product;
 
 import com.codecool.shop.category.Category;
 import com.codecool.shop.category.CategoryService;
+import com.codecool.shop.supplier.Supplier;
 import com.codecool.shop.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -30,10 +28,19 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    public String showProductsByCategory(Model model) {
+    public String showProductsByCategory(Model model,
+                                         @RequestParam(required = false) String showBy) {
+        //this 2 must be:
         List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("currentCategories", categories);
+        List<Supplier> suppliers = supplierService.getAllSuppliers();
         model.addAttribute("allCategories", categories);
+        model.addAttribute("allSuppliers", suppliers);
+        //presence of those 2 ale XOR-like:
+        if ("suppliers".equals(showBy)) {
+            model.addAttribute("currentSuppliers", suppliers);
+        } else if ("categories".equals(showBy) || showBy == null || showBy.isEmpty()) {
+            model.addAttribute("currentCategories", categories);
+        }
         return "index";
     }
 

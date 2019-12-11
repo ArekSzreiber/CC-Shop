@@ -1,5 +1,6 @@
 package com.codecool.shop.category;
 
+import com.codecool.shop.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +17,12 @@ import java.util.List;
 @Controller
 public class CategoryController {
     private CategoryService categoryService;
+    private SupplierService supplierService;
 
-    public CategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService) {
+    public CategoryController(@Qualifier("categoryServiceImpl") CategoryService categoryService,
+                              SupplierService supplierService) {
         this.categoryService = categoryService;
+        this.supplierService = supplierService;
     }
 
     @GetMapping("/categories")
@@ -64,6 +68,7 @@ public class CategoryController {
     @GetMapping("/categories/{id}/products")
     public String showProductsByCategory(@PathVariable int id, Model model) {
         model.addAttribute("allCategories", categoryService.getAllCategories());
+        model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
         model.addAttribute("currentCategories", Collections.singletonList(categoryService.findById(id)));
         model.addAttribute("products", categoryService.findAllProductsByCategoryId(id));
         return "index";

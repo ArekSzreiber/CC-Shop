@@ -1,5 +1,6 @@
 package com.codecool.shop.supplier;
 
+import com.codecool.shop.category.CategoryService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +17,12 @@ import java.util.List;
 @Controller
 public class SupplierController {
     private SupplierService supplierService;
+    private CategoryService categoryService;
 
-    public SupplierController(@Qualifier("supplierServiceImpl") SupplierService supplierService) {
+    public SupplierController(@Qualifier("supplierServiceImpl") SupplierService supplierService,
+                              CategoryService categoryService) {
         this.supplierService = supplierService;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/suppliers")
@@ -63,7 +67,7 @@ public class SupplierController {
 
     @PostMapping("/suppliers/edit")
     public String editSupplier(@Valid @ModelAttribute Supplier supplier,
-                                 BindingResult result) {
+                               BindingResult result) {
         if (result.hasErrors()) {
             return "suppliers/supplier-update";
         } else {
@@ -74,17 +78,11 @@ public class SupplierController {
 
     @GetMapping("/suppliers/{id}/products")
     public String showProductsBySupplier(@PathVariable int id, Model model) {
+        model.addAttribute("allCategories", categoryService.getAllCategories());
         model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
         model.addAttribute("currentSuppliers", Collections.singletonList(supplierService.findById(id)));
         model.addAttribute("products", supplierService.findAllProductsBySupplierId(id));
-        return "suppliers/products-by-supplier";
+        return "index";
     }
-    //TODO this routing should be merged with index
-    @GetMapping("/suppliers/all/products")
-    public String showAllProductsBySupplier(Model model) {
-        model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
-        model.addAttribute("currentSuppliers", supplierService.getAllSuppliers());
-        return "suppliers/products-by-supplier";
-}
 
 }

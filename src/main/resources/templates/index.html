@@ -1,71 +1,105 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link crossorigin="anonymous"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+  <meta charset="UTF-8">
+  <link crossorigin="anonymous"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 </head>
 
 <body>
 
 <div class="sidenav">
-    <a href="/">All Categories</a>
-    <a th:each="category: ${allCategories}"
-       th:href="@{/categories/{id}/products(id=*{category.id})}"
-       th:text="*{category.name}"
-    >
-    </a>
+  <a href="/?showBy=categories">All Categories</a>
+  <a th:each="category: ${allCategories}"
+     th:href="@{/categories/{id}/products(id=*{category.id})}"
+     th:text="*{category.name}"
+  >
+  </a>
+
+  <hr>
+  <a href="/?showBy=suppliers">All Suppliers</a>
+  <a th:each="supplier: ${allSuppliers}"
+     th:href="@{/suppliers/{id}/products(id=*{supplier.id})}"
+     th:text="*{supplier.name}"
+  >
+  </a>
 </div>
 
 <div class="main">
 
 
-    <h1>This is index page</h1>
-    <ol th:each="category: ${currentCategories}">
-        <li>
-            <table class="table">
-                <thead class="thead-dark">
-                <tr>
-                    <th class="category-name" scope="col" th:text="'Category: ' + *{category.name}"></th>
-                    <th class="category-name" scope="col">Name</th>
-                    <th class="category-name" scope="col">Supplier</th>
-                    <th class="category-name" scope="col">Price</th>
-                    <th class="category-name" scope="col">Image</th>
-                    <th class="category-name" scope="col">Properties</th>
-                    <th class="category-name" scope="col">Description</th>
-                </tr>
-                </thead>
-                <tr th:each="product: *{category.products}">
-                    <td></td>
-                    <td class="align-middle" scope="row" th:text="*{product.title}"></td>
-                    <td class="align-middle" th:text="${#objects.nullSafe(product?.supplier?.name,'')}"></td>
-                    <td class="align-middle" th:text="*{product.price}">$</td>
-                    <td class="align-middle">
-                        <img class="image"
-                             th:src="*{product.imageURL}"
-                        >
-                    </td>
-                    <td class="align-middle" th:text="*{product.properties}"></td>
-                    <td class="align-middle" th:text="*{product.description}"></td>
-                </tr>
-            </table>
-        </li>
+  <h1>This is index page</h1>
+  <ol th:each="category: ${currentCategories}">
+    <li>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th class="category-name" scope="col" th:text="'Category: ' + *{category.name}"></th>
+          <th class="category-name" scope="col">Name</th>
+          <th class="category-name" scope="col">Supplier</th>
+          <th class="category-name" scope="col">Price</th>
+          <th class="category-name" scope="col">Image</th>
+          <th class="category-name" scope="col">Properties</th>
+          <th class="category-name" scope="col">Description</th>
+        </tr>
+        </thead>
+        <tr th:each="product: *{category.products}">
+          <td></td>
+          <td class="align-middle" scope="row" th:text="*{product.title}"></td>
+          <td class="align-middle" th:text="${#objects.nullSafe(product?.supplier?.name,'')}"></td>
+          <td class="align-middle" th:text="*{product.price}">$</td>
+          <td class="align-middle">
+            <img class="image"
+                 th:src="*{product.imageURL}"
+            >
+          </td>
+          <td class="align-middle" th:text="*{product.properties}"></td>
+          <td class="align-middle" th:text="*{product.description}"></td>
+        </tr>
+      </table>
+    </li>
+  </ol>
+
+  <ol th:each="supplier: ${currentSuppliers}">
+    <li>
+      <table class="table">
+        <thead class="thead-dark">
+        <tr>
+          <th class="category-name" scope="col" th:text="*{supplier.name}"></th>
+          <th class="category-name" scope="col">Name</th>
+          <th class="category-name" scope="col">Supplier</th>
+          <th class="category-name" scope="col">Price</th>
+          <th class="category-name" scope="col">Image</th>
+          <th class="category-name" scope="col">Properties</th>
+          <th class="category-name" scope="col">Description</th>
+        </tr>
+        </thead>
+        <tr th:each="product: *{supplier.products}">
+          <td></td>
+          <td class="align-middle" scope="row" th:text="*{product.title}"></td>
+          <td class="align-middle" th:text="${#objects.nullSafe(product?.supplier?.name,'')}"></td>
+          <td class="align-middle" th:text="*{product.price}">$</td>
+          <td class="align-middle">
+            <img class="image"
+                 th:src="*{product.imageURL}"
+            >
+          </td>
+          <td class="align-middle" th:text="*{product.properties}"></td>
+          <td class="align-middle" th:text="*{product.description}"></td>
+        </tr>
+      </table>
+    </li>
+  </ol>
 
 
-    </ol>
-
-
-    <div class="container">
-        <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add}">Add new
-            product</a>
-        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/categories}">Categories</a>
-        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/products}">Products</a>
-        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers/all/products}">Products by Supplier</a>
-        <a class="btn btn-outline-primary mb-3 mt-3" th:href="@{/suppliers}">Suppliers</a>
-    </div>
+  <div class="container">
+    <a class="btn btn-outline-dark mb-3 mt-3" th:href="@{/products/add}">Add new
+      product</a>
+    <th:block th:include="fragments :: navigation"/>
+  </div>
 </div>
 </body>
 </html>
