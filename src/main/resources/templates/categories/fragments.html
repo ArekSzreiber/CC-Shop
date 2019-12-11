@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<th:block th:fragment="form">
+<th:block th:fragment="form(category)">
     <div class="container">
         <form action="#" method="POST" th:action="@{/categories}" th:object="${category}">
             <input th:field="*{id}" type="hidden"/>

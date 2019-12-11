@@ -1,4 +1,4 @@
-package com.codecool.shop.category;
+package com.codecool.shop.supplier;
 
 import com.codecool.shop.product.Product;
 import lombok.Data;
@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 @Entity
 @Table(schema = "public")
-public class Category {
+public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +22,8 @@ public class Category {
     @NotEmpty
     private String name;
 
-
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
     private List<Product> products;
 
     public boolean hasNoProduct() {
@@ -34,4 +33,5 @@ public class Category {
     public List<Product> getProducts() {
         return products;
     }
+
 }

@@ -1,6 +1,7 @@
 package com.codecool.shop.product;
 
 import com.codecool.shop.category.Category;
+import com.codecool.shop.supplier.Supplier;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -37,6 +38,10 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    private Supplier supplier;
 
     //zostawiam to jako przykład, do usunięcia z czasem
     /*

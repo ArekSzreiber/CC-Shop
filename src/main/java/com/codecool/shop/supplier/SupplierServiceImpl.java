@@ -1,0 +1,54 @@
+package com.codecool.shop.supplier;
+
+import com.codecool.shop.product.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class SupplierServiceImpl implements SupplierService {
+    private SupplierRepository supplierRepository;
+
+    @Autowired
+    public SupplierServiceImpl(SupplierRepository supplierRepository) {
+        this.supplierRepository = supplierRepository;
+    }
+
+    @Override
+    public List<Supplier> getAllSuppliers() {
+        return supplierRepository.findAll();
+    }
+
+    @Override
+    public void save(Supplier supplier) {
+        supplierRepository.save(supplier);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        supplierRepository.deleteById(id);
+    }
+
+    @Override
+    public Supplier findById(int id) {
+        Optional<Supplier> result = supplierRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get();
+        } else {
+            throw new RuntimeException("Did not find Supplier with id: " + id);
+        }
+    }
+
+    @Override
+    public List<Product> findAllProductsBySupplierId(int id) {
+        Optional<Supplier> result = supplierRepository.findById(id);
+        if (result.isPresent()) {
+            return result.get().getProducts();
+        } else {
+            throw new RuntimeException("Did not find Category with id: " + id);
+        }
+    }
+
+}
