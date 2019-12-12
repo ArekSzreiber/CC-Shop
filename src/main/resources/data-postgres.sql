@@ -78,6 +78,15 @@ VALUES (6, 6, 'Impact', 'Base heavy duty chassis'),
        (6, 6, 'Carbon Magna', 'Ultra light and super-strong')
 ON CONFLICT DO NOTHING;
 
+-- Brakes
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (7, 4, 'Wheelforce', 'Basic brake system'),
+       (7, 4, 'Wheelforce Ultra', 'Enhanced performance'),
+       (7, 4, 'Maxim', 'Improved efficiency'),
+       (7, 4, 'Brakesure Lite', 'Responsive brake system'),
+       (7, 4, 'Brakesure Pro', 'Outstanding brake')
+ON CONFLICT DO NOTHING;
+
 /*INSERT INTO product (category_id, supplier_id, title, description)
 VALUES
 (, , '', ''),
