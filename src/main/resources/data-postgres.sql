@@ -96,10 +96,14 @@ VALUES (8, 4, 'Cognito 4-Gear System', 'Basic 2 gear system'),
        (8, 4, 'Velocity', '6 gear racing specification')
 ON CONFLICT DO NOTHING;
 
-/*INSERT INTO product (category_id, supplier_id, title, description)
-VALUES
-(, , '', ''),
-ON CONFLICT DO NOTHING;*/
+-- Boost
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (9, 1, 'Stunt Lite', 'Basic stunt boost'),
+       (9, 1, 'Stunt Ace', 'Improved launch'),
+       (9, 1, 'Maxi-Lift', 'Increased turbo'),
+       (9, 1, 'Maxi-Lift Pro', 'Super launch potential'),
+       (9, 1, 'Stunt Pro Special Edition', 'Stunt boost extreme')
+ON CONFLICT DO NOTHING;
 
 /*INSERT INTO product (category_id, supplier_id, title, description)
 VALUES
