@@ -69,7 +69,16 @@ VALUES (5, 3, '6V Motor', 'Best-value motor'),
        (5, 3, 'Nitro-V Extreme', 'High performance nitro-engine')
 ON CONFLICT DO NOTHING;
 
+-- Chassis
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (6, 6, 'Impact', 'Base heavy duty chassis'),
+       (6, 6, 'Frame-Star', 'Stronger and heavier'),
+       (6, 6, 'Hollow-Lite', 'Reinforced chassis'),
+       (6, 6, 'Ultra C', 'Strong and light, very desirable'),
+       (6, 6, 'Carbon Magna', 'Ultra light and super-strong')
+ON CONFLICT DO NOTHING;
+
 /*INSERT INTO product (category_id, supplier_id, title, description)
 VALUES
-(4, 2, '', ''),
+(, , '', ''),
 ON CONFLICT DO NOTHING;*/
