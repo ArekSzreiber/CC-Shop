@@ -51,3 +51,12 @@ VALUES (3, 1, 'Maxi-control BMS', 'Maximum brake and handling aids'),
        (3, 1, 'Diablo Extreme', 'Maximum control and performance')
 ON CONFLICT DO NOTHING;
 
+-- Batteries:
+INSERT INTO product (id, category_id, supplier_id, title, description)
+VALUES (19, 4, 2, '6V Quadra-Cell', 'Heavy 4 cell battery'),
+       (20, 4, 2, '6V Duo Cell', 'Dual cell delivers more charge'),
+       (21, 4, 2, '7.2V Powercell Ni-Cad', 'Efficient high capacity cell'),
+       (22, 4, 2, '7.2V Powerforce', 'High performance Ni-MH cell'),
+       (23, 4, 2, '7.2V Lite-Max', 'Super light, super charged')
+ON CONFLICT DO NOTHING;
+
