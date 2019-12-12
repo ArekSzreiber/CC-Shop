@@ -87,6 +87,25 @@ VALUES (7, 4, 'Wheelforce', 'Basic brake system'),
        (7, 4, 'Brakesure Pro', 'Outstanding brake')
 ON CONFLICT DO NOTHING;
 
+-- Gears
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (8, 4, 'Cognito 4-Gear System', 'Basic 2 gear system'),
+       (8, 4, 'Five-Star', '3 gear system, improved efficiency'),
+       (8, 4, 'Five-Star Pro', '5 gear system'),
+       (8, 4, 'Six-Shooted', 'Advanced 6 gear system'),
+       (8, 4, 'Velocity', '6 gear racing specification')
+ON CONFLICT DO NOTHING;
+
+/*INSERT INTO product (category_id, supplier_id, title, description)
+VALUES
+(, , '', ''),
+ON CONFLICT DO NOTHING;*/
+
+/*INSERT INTO product (category_id, supplier_id, title, description)
+VALUES
+(, , '', ''),
+ON CONFLICT DO NOTHING;*/
+
 /*INSERT INTO product (category_id, supplier_id, title, description)
 VALUES
 (, , '', ''),
