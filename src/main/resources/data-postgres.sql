@@ -105,10 +105,14 @@ VALUES (9, 1, 'Stunt Lite', 'Basic stunt boost'),
        (9, 1, 'Stunt Pro Special Edition', 'Stunt boost extreme')
 ON CONFLICT DO NOTHING;
 
-/*INSERT INTO product (category_id, supplier_id, title, description)
-VALUES
-(, , '', ''),
-ON CONFLICT DO NOTHING;*/
+-- Tyres
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (10, 5, 'Dirtbuster', 'Off-road tyres for max grip'),
+       (10, 5, 'Maxi-Grip', 'General purpose'),
+       (10, 5, 'Aerostunt', 'General purpose, all terrain tyres'),
+       (10, 5, 'Vortex', 'Faster, slicker tyres'),
+       (10, 5, 'Velocity', 'Racing slicks')
+ON CONFLICT DO NOTHING;
 
 /*INSERT INTO product (category_id, supplier_id, title, description)
 VALUES
