@@ -15,7 +15,7 @@ ON CONFLICT DO NOTHING;
 INSERT INTO supplier (id, name)
 VALUES (1, 'Mysuko'),
        (2, 'Titan'),
-       (3, 'Caltex'),
+       (3, 'Caltech'),
        (4, 'Itex'),
        (5, 'R-Line'),
        (6, 'TGR')
@@ -52,11 +52,24 @@ VALUES (3, 1, 'Maxi-control BMS', 'Maximum brake and handling aids'),
 ON CONFLICT DO NOTHING;
 
 -- Batteries:
-INSERT INTO product (id, category_id, supplier_id, title, description)
-VALUES (19, 4, 2, '6V Quadra-Cell', 'Heavy 4 cell battery'),
-       (20, 4, 2, '6V Duo Cell', 'Dual cell delivers more charge'),
-       (21, 4, 2, '7.2V Powercell Ni-Cad', 'Efficient high capacity cell'),
-       (22, 4, 2, '7.2V Powerforce', 'High performance Ni-MH cell'),
-       (23, 4, 2, '7.2V Lite-Max', 'Super light, super charged')
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (4, 2, '6V Quadra-Cell', 'Heavy 4 cell battery'),
+       (4, 2, '6V Duo Cell', 'Dual cell delivers more charge'),
+       (4, 2, '7.2V Powercell Ni-Cad', 'Efficient high capacity cell'),
+       (4, 2, '7.2V Powerforce', 'High performance Ni-MH cell'),
+       (4, 2, '7.2V Lite-Max', 'Super light, super charged')
 ON CONFLICT DO NOTHING;
 
+-- Engines
+INSERT INTO product (category_id, supplier_id, title, description)
+VALUES (5, 3, '6V Motor', 'Best-value motor'),
+       (5, 3, '7.2V Motor', 'Improved 7.2V performance'),
+       (5, 3, 'Max-Lite', 'Basic engine'),
+       (5, 3, 'Max-Pro', 'Improved performance'),
+       (5, 3, 'Nitro-V Extreme', 'High performance nitro-engine')
+ON CONFLICT DO NOTHING;
+
+/*INSERT INTO product (category_id, supplier_id, title, description)
+VALUES
+(4, 2, '', ''),
+ON CONFLICT DO NOTHING;*/
