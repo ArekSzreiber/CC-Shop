@@ -36,12 +36,12 @@ public class Product {
     @Column
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
     //zostawiam to jako przykład, do usunięcia z czasem

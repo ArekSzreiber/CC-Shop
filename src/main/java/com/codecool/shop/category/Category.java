@@ -23,8 +23,7 @@ public class Category {
     private String name;
 
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
     public boolean hasNoProduct() {
