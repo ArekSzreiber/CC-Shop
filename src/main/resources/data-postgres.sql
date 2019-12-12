@@ -114,7 +114,9 @@ VALUES (10, 5, 'Dirtbuster', 'Off-road tyres for max grip'),
        (10, 5, 'Velocity', 'Racing slicks')
 ON CONFLICT DO NOTHING;
 
-/*INSERT INTO product (category_id, supplier_id, title, description)
-VALUES
-(, , '', ''),
-ON CONFLICT DO NOTHING;*/
+-- Drive
+INSERT INTO product (category_id, supplier_id, title)
+VALUES (11, 6, 'Front Wheel Drive System'),
+       (11, 6, 'Rear Wheel Drive System'),
+       (11, 6, 'Four Wheel Drive System')
+ON CONFLICT DO NOTHING;
