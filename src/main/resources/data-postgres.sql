@@ -42,5 +42,12 @@ VALUES (9, 2, 4, 'Basic', 'Basic shocks'),
        (13, 2, 4, 'Ultra Shock', 'Max absorption')
 ON CONFLICT DO NOTHING;
 
-
+-- BMS:
+INSERT INTO product (id, category_id, supplier_id, title, description)
+VALUES (14, 3, 1, 'Maxi-control BMS', 'Maximum brake and handling aids'),
+       (15, 3, 1, 'Enhanced BMS', 'Increased performance levels'),
+       (16, 3, 1, 'BMS Bypass', 'Increased performance, less aid'),
+       (17, 3, 1, 'Mephisto', 'Minimum driving aid'),
+       (18, 3, 1, 'Diablo Extreme', 'Maximum control and performance')
+ON CONFLICT DO NOTHING;
 
