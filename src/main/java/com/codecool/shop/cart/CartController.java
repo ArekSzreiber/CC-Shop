@@ -21,9 +21,12 @@ public class CartController {
     }
 
     @GetMapping("/add-to-cart/product/{id}")
-    public void addToCart(@PathVariable int id){
+    public String addToCart(@PathVariable int id){
         cartService.addProduct(productService.findById(id));
         System.out.println("Product Added!");
+        int numberOfProductsInCart = cartService.getNumberOfProductsInCart();
+        String jsonToSend = "{\"number\": " + numberOfProductsInCart + "}";
+        return jsonToSend;
     }
 
     @GetMapping("/cart")
