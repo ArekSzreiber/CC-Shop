@@ -15,4 +15,14 @@ public class CartServiceImpl implements CartService {
     public void addProduct(Product product) {
         products.add(product);
     }
+
+    @Override
+    public List<Product> getAllProducts() {
+        return products;
+    }
+
+    @Override
+    public int getNumberOfProductsInCart() {
+        return products.size();
+    }
 }
