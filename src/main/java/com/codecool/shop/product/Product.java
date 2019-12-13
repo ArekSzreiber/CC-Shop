@@ -8,11 +8,13 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Data
 @Component
 @Entity
-@Table(schema = "public")
+@Table(schema = "public",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"title", "category_id", "supplier_id"}))
 public class Product {
 
     @Id
@@ -35,12 +37,12 @@ public class Product {
     @Column
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
     //zostawiam to jako przykład, do usunięcia z czasem
@@ -63,5 +65,25 @@ public class Product {
                 ", properties='" + properties + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return id.equals(product.id) &&
+                title.equals(product.title) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(imageURL, product.imageURL) &&
+                Objects.equals(properties, product.properties) &&
+                Objects.equals(description, product.description) &&
+                category.equals(product.category) &&
+                supplier.equals(product.supplier);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, price, imageURL, properties, description);
     }
 }

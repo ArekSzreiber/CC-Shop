@@ -22,8 +22,7 @@ public class Supplier {
     @NotEmpty
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "supplier_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "supplier")
     private List<Product> products;
 
     public boolean hasNoProduct() {
