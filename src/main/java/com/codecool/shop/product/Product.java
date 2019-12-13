@@ -13,7 +13,8 @@ import java.util.Objects;
 @Data
 @Component
 @Entity
-@Table(schema = "public")
+@Table(schema = "public",
+        uniqueConstraints = @UniqueConstraint(columnNames = {"title", "category_id", "supplier_id"}))
 public class Product {
 
     @Id
