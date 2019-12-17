@@ -1,3 +1,8 @@
+CREATE TABLE category
+(
+    id   integer NOT NULL,
+    name text    NOT NULL
+);
 INSERT INTO category (id, name)
 VALUES (1, 'Cars'),
        (2, 'Suspension'),
@@ -12,6 +17,12 @@ VALUES (1, 'Cars'),
        (11, 'Drive')
 ON CONFLICT DO NOTHING;
 
+CREATE TABLE supplier
+(
+    id   integer NOT NULL,
+    name text    NOT NULL
+);
+
 INSERT INTO supplier (id, name)
 VALUES (1, 'Mysuko'),
        (2, 'Titan'),
@@ -22,6 +33,13 @@ VALUES (1, 'Mysuko'),
 ON CONFLICT DO NOTHING;
 
 -- Cars:
+CREATE TABLE product
+(
+    category_id integer NOT NULL,
+    supplier_id integer NOT NULL,
+    title       text    NOT NULL,
+    description text
+);
 INSERT INTO product (category_id, supplier_id, title)
 VALUES (1, 4, 'Dune Rat'),
        (1, 6, 'Brute'),
