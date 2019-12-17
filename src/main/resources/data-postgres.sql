@@ -23,14 +23,14 @@ ON CONFLICT DO NOTHING;
 
 -- Cars:
 INSERT INTO product (category_id, supplier_id, title)
-VALUES (1, 1, 'Dune Rat'),
-       (1, 1, 'Brute'),
-       (1, 1, 'Sand Shark'),
-       (1, 1, 'Sky Hawk'),
-       (1, 1, 'Stunt Monkey'),
-       (1, 1, 'Mean Streak'),
-       (1, 1, 'Alley Kat'),
-       (1, 1, 'Nitro Lightning')
+VALUES (1, 4, 'Dune Rat'),
+       (1, 6, 'Brute'),
+       (1, 4, 'Sand Shark'),
+       (1, 6, 'Sky Hawk'),
+       (1, 5, 'Stunt Monkey'),
+       (1, 4, 'Mean Streak'),
+       (1, 3, 'Alley Kat'),
+       (1, 2, 'Nitro Lightning')
 ON CONFLICT DO NOTHING;
 
 -- Suspension:
