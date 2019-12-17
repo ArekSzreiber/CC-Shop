@@ -1,4 +1,4 @@
-CREATE TABLE category
+CREATE TABLE IF NOT EXISTS category
 (
     id   integer NOT NULL,
     name text    NOT NULL
@@ -17,7 +17,7 @@ VALUES (1, 'Cars'),
        (11, 'Drive')
 ON CONFLICT DO NOTHING;
 
-CREATE TABLE supplier
+CREATE TABLE IF NOT EXISTS supplier
 (
     id   integer NOT NULL,
     name text    NOT NULL
@@ -33,7 +33,7 @@ VALUES (1, 'Mysuko'),
 ON CONFLICT DO NOTHING;
 
 -- Cars:
-CREATE TABLE product
+CREATE TABLE IF NOT EXISTS product
 (
     category_id integer NOT NULL,
     supplier_id integer NOT NULL,
@@ -48,7 +48,8 @@ VALUES (1, 4, 'Dune Rat'),
        (1, 5, 'Stunt Monkey'),
        (1, 4, 'Mean Streak'),
        (1, 3, 'Alley Kat'),
-       (1, 2, 'Nitro Lightning')
+       (1, 2, 'Nitro Lightning'),
+       (1, 3, 'Flying Mantis')
 ON CONFLICT DO NOTHING;
 
 -- Suspension:
