@@ -11,7 +11,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
@@ -26,17 +26,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void deleteById(int id){
+    public void deleteById(int id) {
         productRepository.deleteById(id);
     }
 
     @Override
-    public Product findById(int id){
+    public Product findById(int id) {
         Optional<Product> result = productRepository.findById(id);
         Product product;
-        if(result.isPresent()){
+        if (result.isPresent()) {
             product = result.get();
-        }else{
+        } else {
             throw new RuntimeException("Did not find product id " + id);
         }
         return product;
