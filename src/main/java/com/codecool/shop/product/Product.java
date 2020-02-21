@@ -2,6 +2,7 @@ package com.codecool.shop.product;
 
 import com.codecool.shop.category.Category;
 import com.codecool.shop.supplier.Supplier;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -39,10 +40,12 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private Category category;
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
+    @JsonIgnore
     private Supplier supplier;
 
     //zostawiam to jako przykład, do usunięcia z czasem
