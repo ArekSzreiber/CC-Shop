@@ -1,6 +1,7 @@
 package com.codecool.shop.supplier;
 
 import com.codecool.shop.product.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class Supplier {
     private String name;
 
     @OneToMany(mappedBy = "supplier")
+    @JsonIgnore
     private List<Product> products;
 
     public boolean hasNoProduct() {
