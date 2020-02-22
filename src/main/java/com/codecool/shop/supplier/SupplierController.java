@@ -1,8 +1,11 @@
 package com.codecool.shop.supplier;
 
-import com.codecool.shop.category.CategoryService;
+import com.codecool.shop.product.Product;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -10,16 +13,13 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class SupplierController {
     private SupplierService supplierService;
-    private CategoryService categoryService;
 
-    public SupplierController(@Qualifier("supplierServiceImpl") SupplierService supplierService,
-                              CategoryService categoryService) {
+    public SupplierController(@Qualifier("supplierServiceImpl") SupplierService supplierService) {
         this.supplierService = supplierService;
-        this.categoryService = categoryService;
     }
 
     @GetMapping("/suppliers")
-    public List<Supplier> showSuppliers() {
+    public List<Supplier> getSuppliers() {
         return supplierService.getAllSuppliers();
     }
 
@@ -67,14 +67,9 @@ public class SupplierController {
 //        }
 //    }
 
-//    @GetMapping("/suppliers/{id}/products")
-//    public String showProductsBySupplier(@PathVariable int id, Model model) {
-//        model.addAttribute("allCategories", categoryService.getAllCategories());
-//        model.addAttribute("allSuppliers", supplierService.getAllSuppliers());
-//
-//        model.addAttribute("qualifier", "suppliers");
-//        model.addAttribute("currentQualifiers", Collections.singletonList(supplierService.findById(id)));
-//        return "index";
-//    }
+    @GetMapping("/suppliers/{id}/products")
+    public List<Product> getProductsBySupplier(@PathVariable int id) {
+        return supplierService.findById(id).getProducts();
+    }
 
 }
