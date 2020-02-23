@@ -33,9 +33,6 @@ public class Product {
     private String imageURL;
 
     @Column
-    private String properties;
-
-    @Column
     private String description;
 
     @ManyToOne
@@ -65,7 +62,6 @@ public class Product {
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", imageURL='" + imageURL + '\'' +
-                ", properties='" + properties + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
@@ -79,7 +75,6 @@ public class Product {
                 title.equals(product.title) &&
                 Objects.equals(price, product.price) &&
                 Objects.equals(imageURL, product.imageURL) &&
-                Objects.equals(properties, product.properties) &&
                 Objects.equals(description, product.description) &&
                 category.equals(product.category) &&
                 supplier.equals(product.supplier);
@@ -87,6 +82,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, price, imageURL, properties, description);
+        return Objects.hash(id, title, price, imageURL, description);
     }
 }
