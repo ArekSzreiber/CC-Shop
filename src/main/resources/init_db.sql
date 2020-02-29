@@ -39,18 +39,19 @@ CREATE TABLE IF NOT EXISTS product
     supplier_id integer NOT NULL,
     title       text    NOT NULL,
     price       money   NOT NULL,
+    image_url   text,
     description text
 );
-INSERT INTO product (category_id, supplier_id, title, price)
-VALUES (1, 4, 'Dune Rat', 12500),
-       (1, 6, 'Brute', 36000),
-       (1, 4, 'Sand Shark', 14000),
-       (1, 6, 'Sky Hawk', 25000),
-       (1, 5, 'Stunt Monkey', 23000),
-       (1, 4, 'Mean Streak', 28000),
-       (1, 3, 'Alley Kat', 31000),
-       (1, 2, 'Nitro Lightning', 44000),
-       (1, 3, 'Flying Mantis', 55000)
+INSERT INTO product (category_id, supplier_id, title, price, image_url)
+VALUES (1, 4, 'Dune Rat', 1250, NULL),
+       (1, 6, 'Brute', 3600, NULL),
+       (1, 4, 'Sand Shark', 1400, 'http://studio408.pl/authors/skot/021.jpg'),
+       (1, 6, 'Sky Hawk', 2500, 'http://studio408.pl/authors/skot/018.jpg'),
+       (1, 5, 'Stunt Monkey', 2300, NULL),
+       (1, 4, 'Mean Streak', 2800, 'http://studio408.pl/authors/skot/024.jpg'),
+       (1, 3, 'Alley Kat', 3100, NULL),
+       (1, 2, 'Nitro Lightning', 4400, NULL),
+       (1, 3, 'Flying Mantis', 5500, NULL)
 ON CONFLICT DO NOTHING;
 
 -- Suspension:
