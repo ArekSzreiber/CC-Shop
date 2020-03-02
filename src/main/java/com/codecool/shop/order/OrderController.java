@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
-    @PostMapping("/personalData")
-    public PersonalData takeOrder(@RequestBody PersonalData personalData) {
-        System.out.println(personalData);
-        return personalData;
+    @PostMapping("/orders")
+    public Order takeOrder(@RequestBody Order order) {
+        System.out.println(order);
+        //todo validation and processing order
+        //todo return information whether data was correct and was processed
+        return order;
     }
 }
