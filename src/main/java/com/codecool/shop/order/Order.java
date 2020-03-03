@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Component
@@ -28,4 +29,18 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "shipping_address_id")
     private Address shippingAddress;
+
+    @OneToMany
+    private List<OrderProduct> orderProducts;
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", personalData=" + personalData +
+                ", billingAddress=" + billingAddress +
+                ", shippingAddress=" + shippingAddress +
+                ", orderProducts=" + orderProducts +
+                '}';
+    }
 }
