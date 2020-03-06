@@ -8,9 +8,7 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAllProducts();
 
-    void save(Product product);
-
-    void deleteById(int id);
+    Product save(Product product);
 
     Product findById(int id);
 }

@@ -10,9 +10,7 @@ public interface CategoryService {
 
     List<Category> getAllCategories();
 
-    void save(Category category);
-
-    void deleteById(int id);
+    Category save(Category category);
 
     Category findById(int id);
 
