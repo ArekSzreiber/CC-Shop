@@ -9,9 +9,7 @@ public interface SupplierService {
 
     List<Supplier> getAllSuppliers();
 
-    void save(Supplier supplier);
-
-    void deleteById(int id);
+    Supplier save(Supplier supplier);
 
     Supplier findById(int id);
 
