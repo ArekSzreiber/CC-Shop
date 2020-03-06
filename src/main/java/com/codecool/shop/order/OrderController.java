@@ -1,26 +1,31 @@
 package com.codecool.shop.order;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
-    List<Order> orders = new ArrayList<>();
+
+    OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @PostMapping("/orders")
-    public Order takeOrder(@RequestBody Order order) {
-        orders.add(order);
+    public ResponseEntity<Order> takeOrder(@RequestBody Order order) {
         System.out.println(order.toString());
-        System.out.println(orders.size());
-        //todo validation and processing order
-        //todo return information whether data was correct and was processed
-        return order;
+        if (this.orderService.validate(order)) {
+            return new ResponseEntity<>(orderService.save(order), HttpStatus.CREATED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 }

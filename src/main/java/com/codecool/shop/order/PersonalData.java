@@ -1,9 +1,6 @@
 package com.codecool.shop.order;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -11,13 +8,10 @@ import javax.persistence.*;
 @Data
 @Component
 @Entity
-@Setter
-@Getter
 @Table(schema = "public")
 public class PersonalData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Integer id;
 
     @Column
@@ -32,4 +26,7 @@ public class PersonalData {
     @Column
     private String phoneNumber;
 
+    public boolean isValid() {
+        return firstName.length() > 0; // todo
+    }
 }

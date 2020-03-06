@@ -15,7 +15,6 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Integer id;
 
     @ManyToOne
@@ -33,14 +32,4 @@ public class Order {
     @OneToMany
     private List<OrderProduct> orderProducts;
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", personalData=" + personalData +
-                ", billingAddress=" + billingAddress +
-                ", shippingAddress=" + shippingAddress +
-                ", orderProducts=" + orderProducts +
-                '}';
-    }
 }
