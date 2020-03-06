@@ -1,8 +1,11 @@
+TRUNCATE TABLE category, supplier, product RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS category
 (
     id   integer NOT NULL,
     name text    NOT NULL
 );
+
+
 INSERT INTO category (id, name)
 VALUES (1, 'Cars'),
        (2, 'Suspension'),
@@ -23,6 +26,7 @@ CREATE TABLE IF NOT EXISTS supplier
     name text    NOT NULL
 );
 
+
 INSERT INTO supplier (id, name)
 VALUES (1, 'Mysuko'),
        (2, 'Titan'),
@@ -42,6 +46,8 @@ CREATE TABLE IF NOT EXISTS product
     image_url   text,
     description text
 );
+
+
 INSERT INTO product (category_id, supplier_id, title, price, image_url)
 VALUES (1, 4, 'Dune Rat', 1250, NULL),
        (1, 6, 'Brute', 3600, NULL),
