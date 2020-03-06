@@ -6,21 +6,22 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @Component
 @Entity
 @Table(schema = "public")
-public class OrderProduct {
+@Embeddable
+public class OrderProduct implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Integer id; // todo use order_id and product_id as PK
+    // https://www.baeldung.com/jpa-composite-primary-keys
 
     @ManyToOne
-    @JoinColumn(name="order_id")
+    @JoinColumn(name = "order_id")
     private Order order;
 
     @ManyToOne

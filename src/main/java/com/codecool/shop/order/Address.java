@@ -17,7 +17,6 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
     private Integer id;
 
     @Column
@@ -32,4 +31,7 @@ public class Address {
     @Column
     private String address;
 
+    public boolean isValid() {
+        return true; //todo
+    }
 }
