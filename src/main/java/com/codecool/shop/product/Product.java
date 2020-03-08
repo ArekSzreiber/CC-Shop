@@ -55,33 +55,4 @@ public class Product {
     @JoinColumn(name = "supplier_d", referencedColumnName = "supplier_id", insertable = false, updatable = false)
     private Supplier supplier;*/
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", imageURL='" + imageURL + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id.equals(product.id) &&
-                title.equals(product.title) &&
-                Objects.equals(price, product.price) &&
-                Objects.equals(imageURL, product.imageURL) &&
-                Objects.equals(description, product.description) &&
-                category.equals(product.category) &&
-                supplier.equals(product.supplier);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, price, imageURL, description);
-    }
 }
