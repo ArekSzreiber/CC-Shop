@@ -3,6 +3,8 @@ package com.codecool.shop.product;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -15,5 +17,6 @@ public class Parameter {
     private String name;
     private String value;
 
-
+    @ManyToMany(mappedBy = "parameters")
+    private Set<Product> products = new HashSet<>();
 }

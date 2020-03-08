@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Component
@@ -45,14 +46,11 @@ public class Product {
     @JsonIgnore
     private Supplier supplier;
 
-    //zostawiam to jako przykład, do usunięcia z czasem
-    /*
-    @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id", insertable = false, updatable = false)
-    private Category category;*/
-
-/*  @ManyToOne
-    @JoinColumn(name = "supplier_d", referencedColumnName = "supplier_id", insertable = false, updatable = false)
-    private Supplier supplier;*/
-
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "product_parameter",
+            joinColumns = {@JoinColumn(name = "product_id")},
+            inverseJoinColumns = {@JoinColumn(name = "project_id")}
+    )
+    Set<Parameter> parameters = new HashSet<>();
 }
