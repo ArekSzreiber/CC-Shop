@@ -15,7 +15,7 @@ import java.io.Serializable;
 @Embeddable
 public class OrderProduct implements Serializable {
 
-
+    // todo https://www.baeldung.com/jpa-many-to-many#2-creating-a-composite-key-in-jpa
     @Id
     private Integer id; // todo use order_id and product_id as PK
     // https://www.baeldung.com/jpa-composite-primary-keys
