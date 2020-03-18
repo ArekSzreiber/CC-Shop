@@ -23,50 +23,6 @@ public class SupplierController {
         return supplierService.getAllSuppliers();
     }
 
-//    @GetMapping("suppliers/add")
-//    public String addSupplierForm(Model model) {
-//        Supplier supplier = new Supplier();
-//        model.addAttribute("supplier", supplier);
-//        return "suppliers/supplier-add";
-//    }
-
-//    @PostMapping("/suppliers/add")
-//    public String addSupplier(@Valid @ModelAttribute("supplier") Supplier supplier,
-//                              BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "redirect:/suppliers/add";
-//        } else {
-//            supplierService.save(supplier);
-//            return "redirect:/suppliers";
-//        }
-//    }
-
-//    @GetMapping("/suppliers/delete/{id}")
-//    public String deleteSupplier(@PathVariable int id) {
-//        if (supplierService.findById(id).hasNoProduct()) {
-//            supplierService.deleteById(id);
-//        }
-//        return "redirect:/suppliers";
-//    }
-
-//    @GetMapping("/suppliers/{id}/edit")
-//    public String showEditSupplierForm(@PathVariable int id, Model model) {
-//        Supplier supplier = supplierService.findById(id);
-//        model.addAttribute("supplier", supplier);
-//        return "suppliers/supplier-update";
-//    }
-
-//    @PostMapping("/suppliers/edit")
-//    public String editSupplier(@Valid @ModelAttribute Supplier supplier,
-//                               BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "suppliers/supplier-update";
-//        } else {
-//            supplierService.save(supplier);
-//            return "redirect:/suppliers";
-//        }
-//    }
-
     @GetMapping("/suppliers/{id}/products")
     public List<Product> getProductsBySupplier(@PathVariable int id) {
         return supplierService.findById(id).getProducts();

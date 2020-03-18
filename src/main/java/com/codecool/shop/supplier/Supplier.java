@@ -27,10 +27,6 @@ public class Supplier {
     @JsonIgnore
     private List<Product> products;
 
-    public boolean hasNoProduct() {
-        return products.isEmpty();
-    }
-
     public List<Product> getProducts() {
         return products;
     }
