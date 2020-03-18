@@ -1,7 +1,6 @@
 package com.codecool.shop.order;
 
 import com.codecool.shop.product.Product;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +24,7 @@ public class OrderProduct implements Serializable {
     private Order order;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @Column

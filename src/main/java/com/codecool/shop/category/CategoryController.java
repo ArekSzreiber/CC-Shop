@@ -1,7 +1,6 @@
 package com.codecool.shop.category;
 
 import com.codecool.shop.product.Product;
-import com.codecool.shop.supplier.SupplierService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
