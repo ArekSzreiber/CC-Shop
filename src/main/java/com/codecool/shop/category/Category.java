@@ -34,10 +34,6 @@ public class Category {
         this.name = name;
     }
 
-    public boolean hasNoProduct() {
-        return products.isEmpty();
-    }
-
     public List<Product> getProducts() {
         return products;
     }
