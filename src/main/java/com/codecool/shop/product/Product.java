@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
-import java.util.Objects;
 
 @Data
 @Component
@@ -56,22 +55,4 @@ public class Product {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Product product = (Product) o;
-        return id.equals(product.id) &&
-                title.equals(product.title) &&
-                Objects.equals(price, product.price) &&
-                Objects.equals(imageURL, product.imageURL) &&
-                Objects.equals(description, product.description) &&
-                category.equals(product.category) &&
-                supplier.equals(product.supplier);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title, price, imageURL, description);
-    }
 }
