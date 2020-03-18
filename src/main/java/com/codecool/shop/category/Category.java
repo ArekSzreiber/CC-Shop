@@ -1,6 +1,7 @@
 package com.codecool.shop.category;
 
 import com.codecool.shop.product.Product;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
@@ -22,10 +23,16 @@ public class Category {
     @NotEmpty
     private String name;
 
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
     private List<Product> products;
+
+    public Category() {
+    }
+
+    public Category(String name) {
+        this.name = name;
+    }
 
     public boolean hasNoProduct() {
         return products.isEmpty();

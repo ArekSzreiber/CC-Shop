@@ -1,6 +1,5 @@
 package com.codecool.shop.supplier;
 
-import com.codecool.shop.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public List<Supplier> getAllSuppliers() {
-        return supplierRepository.findAll();
+        return supplierRepository.findAllByOrderByName();
     }
 
     @Override
@@ -38,16 +37,6 @@ public class SupplierServiceImpl implements SupplierService {
             return result.get();
         } else {
             throw new RuntimeException("Did not find Supplier with id: " + id);
-        }
-    }
-
-    @Override
-    public List<Product> findAllProductsBySupplierId(int id) {
-        Optional<Supplier> result = supplierRepository.findById(id);
-        if (result.isPresent()) {
-            return result.get().getProducts();
-        } else {
-            throw new RuntimeException("Did not find Category with id: " + id);
         }
     }
 

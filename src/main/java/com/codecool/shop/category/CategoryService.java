@@ -1,6 +1,5 @@
 package com.codecool.shop.category;
 
-import com.codecool.shop.product.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,5 +16,4 @@ public interface CategoryService {
 
     Category findById(int id);
 
-    List<Product> findAllProductsByCategoryId(int id);
 }
