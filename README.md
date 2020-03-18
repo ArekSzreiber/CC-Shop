@@ -24,7 +24,7 @@ Project is created with:
 * To run the whole app, run its [frontend](https://github.com/ArekSzreiber/CC-Shop-Frontend "CC Shop Frontend") part. 
 
 ## Status
-Project is in progress
+Project is in progress.
 
 ## Contact
 Created by [Arkadiusz Szreiber](https://github.com/ArekSzreiber "Arkadiusz Szreiber")
