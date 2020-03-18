@@ -50,7 +50,7 @@ public class Product {
     @JoinTable(
             name = "product_parameter",
             joinColumns = {@JoinColumn(name = "product_id")},
-            inverseJoinColumns = {@JoinColumn(name = "project_id")}
+            inverseJoinColumns = {@JoinColumn(name = "parameter_id")}
     )
     Set<Parameter> parameters = new HashSet<>();
 }

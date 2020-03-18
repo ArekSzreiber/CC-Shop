@@ -8,7 +8,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "parameter",
+@Table(name = "param", // 'parameter' is postgresql keyword
         uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "value"})})
 public class Parameter {
     @Id
