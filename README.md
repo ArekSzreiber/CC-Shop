@@ -1,12 +1,12 @@
-# Codecool Shop - Bike Shop app
+# Codecool Shop - Shop app
 
-Bike Shop app created with Java, Spring, Spring Boot, Spring Data, PostgreSQL, with 
+Shop app created with Java, Spring, Spring Boot, Spring Data, PostgreSQL, with 
 [Frontend](https://github.com/ArekSzreiber/CC-Shop-Frontend "CC Shop Frontend") 
 part created with Angular.
 
 ## General info
 
-The project is a shop with bikes and bike parts. It was created to summarise and extend
+The project is a shop. It was created to summarise and extend
  the knowledge acquired during the fullstack programming course at Codecool.
  
 ## Technologies
@@ -24,7 +24,7 @@ Project is created with:
 * To run the whole app, run its [frontend](https://github.com/ArekSzreiber/CC-Shop-Frontend "CC Shop Frontend") part. 
 
 ## Status
-Project is: in progress: 03.2020
+Project is in progress
 
 ## Contact
 Created by [Arkadiusz Szreiber](https://github.com/ArekSzreiber "Arkadiusz Szreiber")
