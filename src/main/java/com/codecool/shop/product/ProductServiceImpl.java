@@ -20,21 +20,4 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-    @Override
-    public Product save(Product product) {
-        return productRepository.save(product);
-    }
-
-
-    @Override
-    public Product findById(int id) {
-        Optional<Product> result = productRepository.findById(id);
-        Product product;
-        if (result.isPresent()) {
-            product = result.get();
-        } else {
-            throw new RuntimeException("Did not find product id " + id);
-        }
-        return product;
-    }
 }

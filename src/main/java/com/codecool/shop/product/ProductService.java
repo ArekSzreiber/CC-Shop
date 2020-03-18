@@ -8,7 +8,4 @@ import java.util.List;
 public interface ProductService {
     List<Product> getAllProducts();
 
-    Product save(Product product);
-
-    Product findById(int id);
 }
