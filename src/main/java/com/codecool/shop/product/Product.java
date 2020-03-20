@@ -44,15 +44,4 @@ public class Product {
     @JsonIgnore
     private Supplier supplier;
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + product_id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", imageURL='" + imageURL + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
-
 }
