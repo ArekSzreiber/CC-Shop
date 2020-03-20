@@ -19,7 +19,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer product_id;
 
     @Column
     @NotEmpty
@@ -43,16 +43,5 @@ public class Product {
     @JoinColumn(name = "supplier_id")
     @JsonIgnore
     private Supplier supplier;
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", price=" + price +
-                ", imageURL='" + imageURL + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 
 }
