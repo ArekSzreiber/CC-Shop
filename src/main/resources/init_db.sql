@@ -17,7 +17,12 @@ VALUES (1, 'Cars'),
        (8, 'Gears'),
        (9, 'Boost'),
        (10, 'Tyres'),
-       (11, 'Drive')
+       (11, 'Drive'),
+       (12, 'Chains'),
+       (13, 'Cassettes'),
+       (14, 'Wheels'),
+       (15, 'Tubes'),
+       (16, 'Derailleur Gears')
 ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS supplier
@@ -138,7 +143,13 @@ VALUES (10, 5, 'Dirtbuster', 'Off-road tyres for max grip', 300),
        (10, 5, 'Maxi-Grip', 'General purpose', 250),
        (10, 5, 'Aerostunt', 'General purpose, all terrain tyres', 220),
        (10, 5, 'Vortex', 'Faster, slicker tyres', 280),
-       (10, 5, 'Velocity', 'Racing slicks', 400)
+       (10, 5, 'Velocity', 'Racing slicks', 400),
+       (10, 5, 'Road Fighter', '', 600),
+       (10, 5, 'Mountain Crawler', '', 300),
+       (10, 5, 'Mountain Chamois', '', 400),
+       (10, 5, 'Forest Mouse', '', 200),
+       (10, 5, 'Sand Shrew', '', 230),
+       (10, 5, 'Sand Rat', '', 280)
 ON CONFLICT DO NOTHING;
 
 -- Drive
@@ -146,4 +157,50 @@ INSERT INTO product (category_id, supplier_id, title, price)
 VALUES (11, 6, 'Front Wheel Drive System', 500),
        (11, 6, 'Rear Wheel Drive System', 800),
        (11, 6, 'Four Wheel Drive System', 1700)
+ON CONFLICT DO NOTHING;
+
+-- Chains
+INSERT INTO product (category_id, supplier_id, title, price)
+VALUES (12, 1, 'Steel Worm', 50),
+       (12, 1, 'Chrome Worm', 70),
+       (12, 1, 'Steel Night Crawler', 70),
+       (12, 1, 'Chrome Night Crawler', 120)
+ON CONFLICT DO NOTHING;
+
+-- Cassettes
+INSERT INTO product (category_id, supplier_id, title, price)
+VALUES (13, 6, 'Starfish', 45),
+       (13, 1, 'Staryu', 50),
+       (13, 1, 'Starmie', 70),
+       (13, 1, 'Sun Staryu', 200),
+       (13, 1, 'Sun Starmie', 280)
+ON CONFLICT DO NOTHING;
+
+-- Wheels
+INSERT INTO product (category_id, supplier_id, title, price)
+VALUES (14, 4, 'Swift', 50),
+       (14, 4, 'Sparrow', 60),
+       (14, 3, 'Martin', 120),
+       (14, 3, 'Swallow', 260),
+       (14, 4, 'TRE Swift', 500),
+       (14, 4, 'TRE Sparrow', 650)
+ON CONFLICT DO NOTHING;
+
+-- Tubes
+INSERT INTO product (category_id, supplier_id, title, price)
+VALUES (15, 5, 'Standard 26"', 10),
+       (15, 5, 'Pro 26', 15),
+       (15, 5, 'Standard 27.5"', 11),
+       (15, 5, 'Pro 27.5"', 16),
+       (15, 5, 'Standard 29"', 12),
+       (15, 5, 'Pro 29"', 20)
+ON CONFLICT DO NOTHING;
+
+-- Derailleur
+INSERT INTO product (category_id, supplier_id, title, price)
+VALUES (16, 3, 'Albatross', 25),
+       (16, 3, 'Owl', 30),
+       (16, 3, 'Hawk', 90),
+       (16, 3, 'Kite', 150),
+       (16, 3, 'Eagle', 300)
 ON CONFLICT DO NOTHING;
