@@ -19,7 +19,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer product_id;
 
     @Column
     @NotEmpty
@@ -47,7 +47,7 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
+                "id=" + product_id +
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", imageURL='" + imageURL + '\'' +
