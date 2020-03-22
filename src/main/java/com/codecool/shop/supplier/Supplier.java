@@ -31,4 +31,11 @@ public class Supplier {
         return products;
     }
 
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "supplier_id=" + supplier_id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

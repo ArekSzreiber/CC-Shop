@@ -37,4 +37,12 @@ public class Category {
     public List<Product> getProducts() {
         return products;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "category_id=" + category_id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

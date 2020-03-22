@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
+import java.util.EnumSet;
+import java.util.Set;
 
 @Data
 @Component
@@ -43,5 +45,30 @@ public class Product {
     @JoinColumn(name = "supplier_id")
     @JsonIgnore
     private Supplier supplier;
+
+//    @Enumerated(EnumType.ORDINAL)
+//    Property property; // for now just one property, later it should be a set
+//
+//    @ElementCollection(targetClass = Property.class)
+//    @CollectionTable(name = "product_property", joinColumns = @JoinColumn(name = "product_id"))
+//    @Enumerated(EnumType.ORDINAL)
+//    @Column(name = "properties")
+//    private Set<Property> properties = new HashSet<>();
+
+    // todo 1. przechowaj w bazie danych enuma
+    // tabela złączeniowa
+
+    @ElementCollection(targetClass = Property.class)
+    @CollectionTable(name = "product_property", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "property_id")
+    Set<Property> properties = EnumSet.noneOf(Property.class);
+
+/*
+@ElementCollection(targetClass = Platform.class)
+@CollectionTable(name = "TBL_APP_PLATFORM",
+    joinColumns = @JoinColumn(name = "APP_ID"))
+@Column(name = "PLATFORM_ID")
+*/
+
 
 }

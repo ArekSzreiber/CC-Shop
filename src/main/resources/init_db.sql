@@ -1,4 +1,4 @@
-TRUNCATE TABLE category, supplier, product RESTART IDENTITY CASCADE;
+TRUNCATE TABLE category, supplier, product, product_property RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS category
 (
     category_id integer NOT NULL,
@@ -41,7 +41,6 @@ VALUES (1, 'Mysuko'),
        (6, 'TGR')
 ON CONFLICT DO NOTHING;
 
--- Cars:
 CREATE TABLE IF NOT EXISTS product
 (
     product_id  SERIAL PRIMARY KEY,
@@ -53,7 +52,7 @@ CREATE TABLE IF NOT EXISTS product
     description text
 );
 
-
+-- Cars:
 INSERT INTO product (category_id, supplier_id, title, price, image_url)
 VALUES (1, 4, 'Dune Rat', 1250, NULL),
        (1, 6, 'Brute', 3600, NULL),
@@ -205,3 +204,21 @@ VALUES (16, 3, 'Albatross', 25),
        (16, 3, 'Kite', 150),
        (16, 3, 'Eagle', 300)
 ON CONFLICT DO NOTHING;
+
+
+CREATE TABLE IF NOT EXISTS product_property
+(
+    product_id  integer NOT NULL,
+    property_id integer NOT NULL
+);
+
+INSERT INTO product_property(product_id, property_id)
+VALUES (1,1),
+       (1,2),
+       (1,3),
+       (1,4),
+       (1,6),
+       (4,2),
+       (4,7),
+       (4,8)
+       ;
