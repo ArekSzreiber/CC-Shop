@@ -1,12 +1,12 @@
 TRUNCATE TABLE category, supplier, product RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS category
 (
-    id   integer NOT NULL,
-    name text    NOT NULL
+    category_id integer NOT NULL,
+    name        text    NOT NULL
 );
 
 
-INSERT INTO category (id, name)
+INSERT INTO category (category_id, name)
 VALUES (1, 'Cars'),
        (2, 'Suspension'),
        (3, 'BMS'),
@@ -22,12 +22,12 @@ ON CONFLICT DO NOTHING;
 
 CREATE TABLE IF NOT EXISTS supplier
 (
-    id   integer NOT NULL,
-    name text    NOT NULL
+    supplier_id integer NOT NULL,
+    name        text    NOT NULL
 );
 
 
-INSERT INTO supplier (id, name)
+INSERT INTO supplier (supplier_id, name)
 VALUES (1, 'Mysuko'),
        (2, 'Titan'),
        (3, 'Caltech'),
@@ -39,6 +39,7 @@ ON CONFLICT DO NOTHING;
 -- Cars:
 CREATE TABLE IF NOT EXISTS product
 (
+    product_id  SERIAL PRIMARY KEY,
     category_id integer NOT NULL,
     supplier_id integer NOT NULL,
     title       text    NOT NULL,
