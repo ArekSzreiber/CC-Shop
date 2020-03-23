@@ -17,7 +17,7 @@ public class Supplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer supplier_id;
+    private Integer supplierId;
 
     @Column
     @NotEmpty
