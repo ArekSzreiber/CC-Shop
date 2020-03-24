@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @Component
@@ -43,5 +44,19 @@ public class Product {
     @JoinColumn(name = "supplier_id")
     @JsonIgnore
     private Supplier supplier;
+
+    @ManyToMany
+    Set<PropertyValue> properties;
+
+//    @ElementCollection(targetClass = Property.class)
+//    @CollectionTable(name = "product_property", joinColumns = @JoinColumn(name = "product_id"))
+//    @Column(name = "property_id")
+//    Set<Property> properties = EnumSet.noneOf(Property.class);
+
+
+//    public void addProperties(Set<Property> newProperties) {
+//        this.properties.addAll(newProperties);
+//    }
+    // there must a good way to populate products with properties
 
 }
