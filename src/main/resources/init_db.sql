@@ -1,9 +1,9 @@
-TRUNCATE TABLE category RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS category
 (
-    category_id integer NOT NULL,
+    category_id integer PRIMARY KEY,
     name        text    NOT NULL
 );
+TRUNCATE TABLE category RESTART IDENTITY CASCADE;
 INSERT INTO category (category_id, name)
 VALUES (1, 'Cars'),
        (2, 'Suspension'),
@@ -23,12 +23,12 @@ VALUES (1, 'Cars'),
        (16, 'Derailleur Gears');
 
 
-TRUNCATE TABLE supplier RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS supplier
 (
-    supplier_id integer NOT NULL,
+    supplier_id integer PRIMARY KEY,
     name        text    NOT NULL
 );
+TRUNCATE TABLE supplier RESTART IDENTITY CASCADE;
 INSERT INTO supplier (supplier_id, name)
 VALUES (1, 'Mysuko'),
        (2, 'Titan'),
@@ -38,7 +38,6 @@ VALUES (1, 'Mysuko'),
        (6, 'TGR');
 
 
-TRUNCATE TABLE product RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS product
 (
     product_id  SERIAL PRIMARY KEY,
@@ -49,6 +48,7 @@ CREATE TABLE IF NOT EXISTS product
     image_url   text,
     description text
 );
+TRUNCATE TABLE product RESTART IDENTITY CASCADE;
 -- Cars:
 INSERT INTO product (category_id, supplier_id, title, price, image_url)
 VALUES (1, 4, 'Dune Rat', 1250, NULL),
@@ -111,12 +111,12 @@ VALUES (10, 5, 'Road Fighter', 600),
        (16, 3, 'Kite', 150),
        (16, 3, 'Eagle', 300);
 
-TRUNCATE TABLE property_type RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS property_type
 (
-    property_type_id integer NOT NULL,
-    name             text    NOT NULL
+property_type_id SERIAL PRIMARY KEY,
+name             text NOT NULL
 );
+TRUNCATE TABLE property_type RESTART IDENTITY CASCADE;
 INSERT INTO property_type (property_type_id, name)
 VALUES (1, 'color'),
        (2, 'diameter'),
@@ -125,13 +125,13 @@ VALUES (1, 'color'),
        (5, 'number of teeth'),
        (6, 'surface');
 
-TRUNCATE TABLE property_value RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS property_value
 (
-    property_value_id integer NOT NULL,
-    property_type_id  integer REFERENCES property_type (property_type_id),
-    value             text    NOT NULL
+property_value_id SERIAL PRIMARY KEY,
+property_type_id  integer REFERENCES property_type (property_type_id),
+value             text NOT NULL
 );
+TRUNCATE TABLE property_value RESTART IDENTITY CASCADE;
 INSERT INTO property_value (property_value_id, property_type_id, value)
 VALUES (1, 1, 'green'),
        (2, 1, 'grey'),
@@ -142,32 +142,32 @@ VALUES (1, 1, 'green'),
        (7, 2, '26'),
        (8, 2, '27.5'),
        (9, 2, '29'),
-       (9, 3, '110'),
-       (9, 3, '114'),
-       (9, 3, '116'),
-       (9, 4, '7'),
-       (9, 4, '8'),
-       (9, 4, '9'),
-       (9, 4, '10'),
-       (9, 4, '11'),
-       (9, 4, '12'),
-       (9, 5, '32'),
-       (9, 5, '36'),
-       (9, 5, '42'),
-       (9, 5, '44'),
-       (9, 6, 'hardpack'),
-       (9, 6, 'loose'),
-       (9, 6, 'mud'),
-       (9, 6, 'road');
+       (10, 3, '110'),
+       (11, 3, '114'),
+       (12, 3, '116'),
+       (13, 4, '7'),
+       (14, 4, '8'),
+       (15, 4, '9'),
+       (16, 4, '10'),
+       (17, 4, '11'),
+       (18, 4, '12'),
+       (19, 5, '32'),
+       (20, 5, '36'),
+       (21, 5, '42'),
+       (22, 5, '44'),
+       (23, 6, 'hardpack'),
+       (24, 6, 'loose'),
+       (25, 6, 'mud'),
+       (26, 6, 'road');
 
 
-TRUNCATE TABLE category_property_type RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS category_property_type
 (
-    category_id      int REFERENCES category (category_id),
-    property_type_id int REFERENCES property_type (property_type_id),
-    PRIMARY KEY (category_id, property_type_id)
+category_id      int NOT NULL,
+property_type_id int NOT NULL,
+PRIMARY KEY (category_id, property_type_id)
 );
+TRUNCATE TABLE category_property_type RESTART IDENTITY CASCADE;
 INSERT INTO category_property_type(category_id, property_type_id)
 VALUES (10, 1),
        (10, 2),
@@ -182,10 +182,10 @@ VALUES (10, 1),
        (16, 4);
 
 
-TRUNCATE TABLE product_property_value RESTART IDENTITY CASCADE;
 CREATE TABLE IF NOT EXISTS product_property_value
 (
-    product_id        int REFERENCES product (product_id),
-    property_value_id int REFERENCES property_value (property_value_id),
-    PRIMARY KEY (product_id, property_value_id)
+product_id        int NOT NULL,
+property_value_id int NOT NULL,
+PRIMARY KEY (product_id, property_value_id)
 );
+TRUNCATE TABLE product_property_value RESTART IDENTITY CASCADE;
