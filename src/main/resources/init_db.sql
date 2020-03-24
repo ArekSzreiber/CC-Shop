@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS category
 (
     category_id integer PRIMARY KEY,
-    name        text    NOT NULL
+    name        text NOT NULL
 );
 TRUNCATE TABLE category RESTART IDENTITY CASCADE;
 INSERT INTO category (category_id, name)
@@ -26,7 +26,7 @@ VALUES (1, 'Cars'),
 CREATE TABLE IF NOT EXISTS supplier
 (
     supplier_id integer PRIMARY KEY,
-    name        text    NOT NULL
+    name        text NOT NULL
 );
 TRUNCATE TABLE supplier RESTART IDENTITY CASCADE;
 INSERT INTO supplier (supplier_id, name)
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS product
     category_id integer NOT NULL,
     supplier_id integer NOT NULL,
     title       text    NOT NULL,
-    price       money   NOT NULL,
+    price       bigint  NOT NULL,
     image_url   text,
     description text
 );
@@ -62,41 +62,82 @@ VALUES (1, 4, 'Dune Rat', 1250, NULL),
        (1, 3, 'Flying Mantis', 5500, NULL);
 
 INSERT INTO product (category_id, supplier_id, title, description, price)
+-- Batteries:
+VALUES (4, 2, '6V Quadra-Cell', 'Heavy 4 cell battery', 100),
+       (4, 2, '6V Duo Cell', 'Dual cell delivers more charge', 150),
+       (4, 2, '7.2V Powercell Ni-Cad', 'Efficient high capacity cell', 400),
+       (4, 2, '7.2V Powerforce', 'High performance Ni-MH cell', 600),
+       (4, 2, '7.2V Lite-Max', 'Super light, super charged', 1700),
+-- BMS:
+       (3, 1, 'Maxi-control BMS', 'Maximum brake and handling aids', 300),
+       (3, 1, 'Enhanced BMS', 'Increased performance levels', 400),
+       (3, 1, 'BMS Bypass', 'Increased performance, less aid', 500),
+       (3, 1, 'Mephisto', 'Minimum driving aid', 1000),
+       (3, 1, 'Diablo Extreme', 'Maximum control and performance', 3000),
+-- Boost
+       (9, 1, 'Stunt Lite', 'Basic stunt boost', 200),
+       (9, 1, 'Stunt Ace', 'Improved launch', 300),
+       (9, 1, 'Maxi-Lift', 'Increased turbo', 450),
+       (9, 1, 'Maxi-Lift Pro', 'Super launch potential', 550),
+       (9, 1, 'Stunt Pro Special Edition', 'Stunt boost extreme', 950),
+-- Brakes
+       (7, 4, 'Wheelforce', 'Basic brake system', 40),
+       (7, 4, 'Wheelforce Ultra', 'Enhanced performance', 120),
+       (7, 4, 'Maxim', 'Improved efficiency', 180),
+       (7, 4, 'Brakesure Lite', 'Responsive brake system', 500),
+       (7, 4, 'Brakesure Pro', 'Outstanding brake', 1500),
+-- Chassis
+       (6, 6, 'Impact', 'Base heavy duty chassis', 70),
+       (6, 6, 'Frame-Star', 'Stronger and heavier', 120),
+       (6, 6, 'Hollow-Lite', 'Reinforced chassis', 230),
+       (6, 6, 'Ultra C', 'Strong and light, very desirable', 400),
+       (6, 6, 'Carbon Magna', 'Ultra light and super-strong', 1000),
+-- Engines
+       (5, 3, '6V Motor', 'Best-value motor', 50),
+       (5, 3, '7.2V Motor', 'Improved 7.2V performance', 120),
+       (5, 3, 'Max-Lite', 'Basic engine', 800),
+       (5, 3, 'Max-Pro', 'Improved performance', 1200),
+       (5, 3, 'Nitro-V Extreme', 'High performance nitro-engine', 1800),
+-- Gears
+       (8, 4, 'Cognito 4-Gear System', 'Basic 2 gear system', 250),
+       (8, 4, 'Five-Star', '3 gear system, improved efficiency', 350),
+       (8, 4, 'Five-Star Pro', '5 gear system', 600),
+       (8, 4, 'Six-Shooted', 'Advanced 6 gear system', 900),
+       (8, 4, 'Velocity', '6 gear racing specification', 1600),
+-- Suspension
+       (2, 4, 'Basic', 'Basic shocks', 200),
+       (2, 4, 'Compact', 'Enhanced ride', 550),
+       (2, 4, 'Absorber', 'Damage reducing travel', 950),
+       (2, 4, 'Absorber Pro', 'Super tough and strong', 1550),
+       (2, 4, 'Ultra Shock', 'Max absorption', 2000),
 -- Tyres
-VALUES (10, 5, 'Dirtbuster', 'Off-road tyres for max grip', 300),
+       (10, 5, 'Dirtbuster', 'Off-road tyres for max grip', 300),
        (10, 5, 'Maxi-Grip', 'General purpose', 250),
        (10, 5, 'Aerostunt', 'General purpose, all terrain tyres', 220),
        (10, 5, 'Vortex', 'Faster, slicker tyres', 280),
        (10, 5, 'Velocity', 'Racing slicks', 400);
 INSERT INTO product (category_id, supplier_id, title, price)
-VALUES (10, 5, 'Road Fighter', 600),
-       (10, 5, 'Mountain Crawler', 300),
-       (10, 5, 'Mountain Chamois', 400),
-       (10, 5, 'Forest Mouse', 200),
-       (10, 5, 'Sand Shrew', 230),
-       (10, 5, 'Sand Rat', 280),
--- Drive
-       (11, 6, 'Front Wheel Drive System', 500),
-       (11, 6, 'Rear Wheel Drive System', 800),
-       (11, 6, 'Four Wheel Drive System', 1700),
--- Chains
-       (12, 1, 'Steel Worm', 50),
-       (12, 1, 'Chrome Worm', 70),
-       (12, 1, 'Steel Night Crawler', 70),
-       (12, 1, 'Chrome Night Crawler', 120),
 -- Cassettes
-       (13, 6, 'Starfish', 45),
+VALUES (13, 6, 'Starfish', 45),
        (13, 1, 'Staryu', 50),
        (13, 1, 'Starmie', 70),
        (13, 1, 'Sun Staryu', 200),
        (13, 1, 'Sun Starmie', 280),
--- Wheels
-       (14, 4, 'Swift', 50),
-       (14, 4, 'Sparrow', 60),
-       (14, 3, 'Martin', 120),
-       (14, 3, 'Swallow', 260),
-       (14, 4, 'TRE Swift', 500),
-       (14, 4, 'TRE Sparrow', 650),
+-- Chains
+       (12, 1, 'Steel Worm', 50),
+       (12, 1, 'Chrome Worm', 70),
+       (12, 1, 'Steel Night Crawler', 80),
+       (12, 1, 'Chrome Night Crawler', 120),
+-- Derailleur
+       (16, 3, 'Albatross', 25),
+       (16, 3, 'Owl', 30),
+       (16, 3, 'Hawk', 90),
+       (16, 3, 'Kite', 150),
+       (16, 3, 'Eagle', 300),
+-- Drive
+       (11, 6, 'Front Wheel Drive System', 500),
+       (11, 6, 'Rear Wheel Drive System', 800),
+       (11, 6, 'Four Wheel Drive System', 1700),
 -- Tubes
        (15, 5, 'Standard 26"', 10),
        (15, 5, 'Pro 26', 15),
@@ -104,17 +145,25 @@ VALUES (10, 5, 'Road Fighter', 600),
        (15, 5, 'Pro 27.5"', 16),
        (15, 5, 'Standard 29"', 12),
        (15, 5, 'Pro 29"', 20),
--- Derailleur
-       (16, 3, 'Albatross', 25),
-       (16, 3, 'Owl', 30),
-       (16, 3, 'Hawk', 90),
-       (16, 3, 'Kite', 150),
-       (16, 3, 'Eagle', 300);
+-- Tyres
+       (10, 5, 'Road Fighter', 600),
+       (10, 5, 'Mountain Crawler', 300),
+       (10, 5, 'Mountain Chamois', 400),
+       (10, 5, 'Forest Mouse', 200),
+       (10, 5, 'Sand Shrew', 230),
+       (10, 5, 'Sand Rat', 280),
+-- Wheels
+       (14, 4, 'Swift', 50),
+       (14, 4, 'Sparrow', 60),
+       (14, 3, 'Martin', 120),
+       (14, 3, 'Swallow', 260),
+       (14, 4, 'TRE Swift', 500),
+       (14, 4, 'TRE Sparrow', 650);
 
 CREATE TABLE IF NOT EXISTS property_type
 (
-property_type_id SERIAL PRIMARY KEY,
-name             text NOT NULL
+    property_type_id SERIAL PRIMARY KEY,
+    name             text NOT NULL
 );
 TRUNCATE TABLE property_type RESTART IDENTITY CASCADE;
 INSERT INTO property_type (property_type_id, name)
@@ -127,9 +176,9 @@ VALUES (1, 'color'),
 
 CREATE TABLE IF NOT EXISTS property_value
 (
-property_value_id SERIAL PRIMARY KEY,
-property_type_id  integer REFERENCES property_type (property_type_id),
-value             text NOT NULL
+    property_value_id SERIAL PRIMARY KEY,
+    property_type_id  integer REFERENCES property_type (property_type_id),
+    value             text NOT NULL
 );
 TRUNCATE TABLE property_value RESTART IDENTITY CASCADE;
 INSERT INTO property_value (property_value_id, property_type_id, value)
@@ -163,9 +212,9 @@ VALUES (1, 1, 'green'),
 
 CREATE TABLE IF NOT EXISTS category_property_type
 (
-category_id      int NOT NULL,
-property_type_id int NOT NULL,
-PRIMARY KEY (category_id, property_type_id)
+    category_id      int NOT NULL,
+    property_type_id int NOT NULL,
+    PRIMARY KEY (category_id, property_type_id)
 );
 TRUNCATE TABLE category_property_type RESTART IDENTITY CASCADE;
 INSERT INTO category_property_type(category_id, property_type_id)
@@ -184,8 +233,8 @@ VALUES (10, 1),
 
 CREATE TABLE IF NOT EXISTS product_property_value
 (
-product_id        int NOT NULL,
-property_value_id int NOT NULL,
-PRIMARY KEY (product_id, property_value_id)
+    product_id        int NOT NULL,
+    property_value_id int NOT NULL,
+    PRIMARY KEY (product_id, property_value_id)
 );
 TRUNCATE TABLE product_property_value RESTART IDENTITY CASCADE;
