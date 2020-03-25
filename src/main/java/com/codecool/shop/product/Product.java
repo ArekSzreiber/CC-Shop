@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
@@ -48,6 +49,17 @@ public class Product {
     @ManyToMany
     Set<PropertyValue> properties;
 
+//    @PostConstruct
+//    void postConstruct(){
+        // i tutaj zainicjalizujemy parametry, jeśli są produkty i nie mają kategorii
+        // @PostConstruct może wywalić nullpointera, jak Spring nie zdąży z robieniem @Autowired-owanych pól
+        // https://reflectoring.io/spring-boot-execute-on-startup/
+        //  @Override
+        //  public void afterPropertiesSet() throws Exception {
+        //    logger.info("InitializingBean#afterPropertiesSet()");
+        //  }
+//    }
+
 //    @ElementCollection(targetClass = Property.class)
 //    @CollectionTable(name = "product_property", joinColumns = @JoinColumn(name = "product_id"))
 //    @Column(name = "property_id")
@@ -58,5 +70,6 @@ public class Product {
 //        this.properties.addAll(newProperties);
 //    }
     // there must a good way to populate products with properties
-
+    // properties jako enum zapisywany w bazie
+//getProductByName("Aerostunt").addProperties(Set{})
 }
