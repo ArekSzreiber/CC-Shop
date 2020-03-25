@@ -31,4 +31,11 @@ public class Supplier {
         return products;
     }
 
+    @Override // list of products omitted to avoid cycle
+    public String toString() {
+        return "Supplier{" +
+                "supplierId=" + supplierId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

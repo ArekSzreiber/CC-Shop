@@ -37,4 +37,12 @@ public class Category {
     public List<Product> getProducts() {
         return products;
     }
+
+    @Override // list of products omitted to avoid cycle
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

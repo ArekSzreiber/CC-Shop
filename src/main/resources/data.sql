@@ -103,7 +103,7 @@ VALUES (4, 2, '6V Quadra-Cell', 'Heavy 4 cell battery', 100),
        (8, 4, 'Five-Star', '3 gear system, improved efficiency', 350),
        (8, 4, 'Five-Star Pro', '5 gear system', 600),
        (8, 4, 'Six-Shooted', 'Advanced 6 gear system', 900),
-       (8, 4, 'Velocity', '6 gear racing specification', 1600),
+       (8, 4, 'Momentum', '6 gear racing specification', 1600),
 -- Suspension
        (2, 4, 'Basic', 'Basic shocks', 200),
        (2, 4, 'Compact', 'Enhanced ride', 550),
@@ -140,7 +140,7 @@ VALUES (13, 6, 'Starfish', 45),
        (11, 6, 'Four Wheel Drive System', 1700),
 -- Tubes
        (15, 5, 'Standard 26"', 10),
-       (15, 5, 'Pro 26', 15),
+       (15, 5, 'Pro 26"', 15),
        (15, 5, 'Standard 27.5"', 11),
        (15, 5, 'Pro 27.5"', 16),
        (15, 5, 'Standard 29"', 12),
@@ -159,82 +159,3 @@ VALUES (13, 6, 'Starfish', 45),
        (14, 3, 'Swallow', 260),
        (14, 4, 'TRE Swift', 500),
        (14, 4, 'TRE Sparrow', 650);
-
-CREATE TABLE IF NOT EXISTS property_type
-(
-    property_type_id SERIAL PRIMARY KEY,
-    name             text NOT NULL
-);
-TRUNCATE TABLE property_type RESTART IDENTITY CASCADE;
-INSERT INTO property_type (property_type_id, name)
-VALUES (1, 'color'),
-       (2, 'diameter'),
-       (3, 'number of cells'),
-       (4, 'number of derailleur gears'),
-       (5, 'number of teeth'),
-       (6, 'surface');
-
-CREATE TABLE IF NOT EXISTS property_value
-(
-    property_value_id SERIAL PRIMARY KEY,
-    property_type_id  integer REFERENCES property_type (property_type_id),
-    value             text NOT NULL
-);
-TRUNCATE TABLE property_value RESTART IDENTITY CASCADE;
-INSERT INTO property_value (property_value_id, property_type_id, value)
-VALUES (1, 1, 'green'),
-       (2, 1, 'grey'),
-       (3, 1, 'navy'),
-       (4, 1, 'orange'),
-       (5, 1, 'purple'),
-       (6, 1, 'white'),
-       (7, 2, '26'),
-       (8, 2, '27.5'),
-       (9, 2, '29'),
-       (10, 3, '110'),
-       (11, 3, '114'),
-       (12, 3, '116'),
-       (13, 4, '7'),
-       (14, 4, '8'),
-       (15, 4, '9'),
-       (16, 4, '10'),
-       (17, 4, '11'),
-       (18, 4, '12'),
-       (19, 5, '32'),
-       (20, 5, '36'),
-       (21, 5, '42'),
-       (22, 5, '44'),
-       (23, 6, 'hardpack'),
-       (24, 6, 'loose'),
-       (25, 6, 'mud'),
-       (26, 6, 'road');
-
-
-CREATE TABLE IF NOT EXISTS category_property_type
-(
-    category_id      int NOT NULL,
-    property_type_id int NOT NULL,
-    PRIMARY KEY (category_id, property_type_id)
-);
-TRUNCATE TABLE category_property_type RESTART IDENTITY CASCADE;
-INSERT INTO category_property_type(category_id, property_type_id)
-VALUES (10, 1),
-       (10, 2),
-       (10, 6),
-       (12, 3),
-       (12, 4),
-       (13, 4),
-       (14, 1),
-       (14, 2),
-       (14, 4),
-       (15, 2),
-       (16, 4);
-
-
-CREATE TABLE IF NOT EXISTS product_property_value
-(
-    product_id        int NOT NULL,
-    property_value_id int NOT NULL,
-    PRIMARY KEY (product_id, property_value_id)
-);
-TRUNCATE TABLE product_property_value RESTART IDENTITY CASCADE;

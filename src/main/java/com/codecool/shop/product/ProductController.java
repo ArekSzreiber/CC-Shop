@@ -26,12 +26,9 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public Product getProducts(@PathVariable Integer id)
-    {
+    public Product getProducts(@PathVariable Integer id) {
         Optional<Product> optional = productService.getProduct(id);
-        Product product = optional.orElse(null);
-        System.out.println(product);
-        return product;
+        return optional.orElse(null);
     }
 
 }
