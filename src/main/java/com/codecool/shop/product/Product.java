@@ -59,4 +59,7 @@ public class Product {
     }
 
 
+    public boolean hasParameters() {
+        return !parameters.isEmpty();
+    }
 }

@@ -50,18 +50,21 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void addParameter(String productTitle, String parameterTypeName, String parameterName) {
-        Product product = productRepository.findByTitle(productTitle);
-        ParameterValue parameterValue = parameterService.findParameterValue(parameterTypeName, parameterName);
-        product.addParameter(parameterValue);
-        productRepository.save(product);
+    public void addParameters(String productTitle, String parameterTypeName, String parameterName) {
+        addParameters(productTitle, parameterTypeName, new String[]{parameterName});
     }
 
     @Override
-    public void addParameter(String productTitle, String parameterTypeName, String[] parameterValues) {
-        for (String parameterValue : parameterValues) {
-            addParameter(productTitle, parameterTypeName, parameterValue);
+    public void addParameters(String productTitle, String parameterTypeName, String[] parameterNames) {
+        Product product = productRepository.findByTitle(productTitle);
+        if (product.hasParameters()) {
+            return;
         }
+        for (String parameterName : parameterNames) {
+            ParameterValue parameterValue = parameterService.findParameterValue(parameterTypeName, parameterName);
+            product.addParameter(parameterValue);
+        }
+        productRepository.save(product);
     }
 
 

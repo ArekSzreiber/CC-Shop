@@ -15,9 +15,9 @@ public interface ProductService {
 
     void save(Product product);
 
-    void addParameter(String productTitle, String parameterTypeName, String parameterValue);
+    void addParameters(String productTitle, String parameterTypeName, String parameterValue);
 
-    void addParameter(String productTitle, String parameterTypeName, String[] parameterValues);
+    void addParameters(String productTitle, String parameterTypeName, String[] parameterValues);
 
     Product getById(Integer id);
 }

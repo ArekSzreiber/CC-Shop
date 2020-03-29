@@ -23,10 +23,10 @@ public class ParameterInitializer implements ApplicationListener<ApplicationRead
         ParameterType type;
         try {
             type = ps.save(new ParameterType("color"));
-            ps.save(new ParameterValue(type, "grey"));
-            ps.save(new ParameterValue(type, "green"));
-            ps.save(new ParameterValue(type, "navy"));
             ps.save(new ParameterValue(type, "black"));
+            ps.save(new ParameterValue(type, "green"));
+            ps.save(new ParameterValue(type, "grey"));
+            ps.save(new ParameterValue(type, "navy"));
             ps.save(new ParameterValue(type, "orange"));
             ps.save(new ParameterValue(type, "purple"));
             ps.save(new ParameterValue(type, "white"));
