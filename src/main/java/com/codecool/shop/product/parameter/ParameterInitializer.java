@@ -1,4 +1,4 @@
-package com.codecool.shop.parameter;
+package com.codecool.shop.product.parameter;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.codecool.shop.parameter;
+package com.codecool.shop.product.parameter;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;

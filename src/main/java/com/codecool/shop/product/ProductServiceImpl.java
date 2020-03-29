@@ -1,7 +1,7 @@
 package com.codecool.shop.product;
 
-import com.codecool.shop.parameter.ParameterService;
-import com.codecool.shop.parameter.ParameterValue;
+import com.codecool.shop.product.parameter.ParameterService;
+import com.codecool.shop.product.parameter.ParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

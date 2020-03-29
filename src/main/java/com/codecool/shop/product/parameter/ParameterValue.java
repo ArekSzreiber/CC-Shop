@@ -1,4 +1,4 @@
-package com.codecool.shop.parameter;
+package com.codecool.shop.product.parameter;
 
 import com.codecool.shop.product.Product;
 import com.fasterxml.jackson.annotation.JsonIgnore;

@@ -1,4 +1,4 @@
-package com.codecool.shop.parameter;
+package com.codecool.shop.product.parameter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

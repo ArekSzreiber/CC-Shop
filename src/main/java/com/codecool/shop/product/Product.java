@@ -1,7 +1,7 @@
 package com.codecool.shop.product;
 
 import com.codecool.shop.category.Category;
-import com.codecool.shop.parameter.ParameterValue;
+import com.codecool.shop.product.parameter.ParameterValue;
 import com.codecool.shop.supplier.Supplier;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
