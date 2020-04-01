@@ -9,19 +9,18 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Component
 @Entity
-@Table(schema = "public",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"name", "email"}))
+@Table(schema = "public")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
-    @Column
+    @Column(unique = true)
     @NotEmpty
     private String name;
 
-    @Column
+    @Column(unique = true)
     @NotEmpty
     private String email;
 
