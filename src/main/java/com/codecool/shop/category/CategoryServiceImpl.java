@@ -3,6 +3,7 @@ package com.codecool.shop.category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException("Did not find Product with id: " + id);
+            throw new EntityNotFoundException("Did not find Category with id: " + id);
         }
     }
 

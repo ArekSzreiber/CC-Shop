@@ -1,7 +1,11 @@
 package com.codecool.shop.product.parameter;
 
+import com.codecool.shop.product.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ParameterServiceImpl implements ParameterService {
@@ -41,9 +45,20 @@ public class ParameterServiceImpl implements ParameterService {
         return null;
     }
 
+
     @Override
-    public boolean parametersNotEmpty() {
-        return false;
+    public ParameterValue findParameterValue(String filter) {
+        String[] parameters = filter.split(":");
+        String typeName = parameters[0];
+        String valueName = parameters[1];
+        return findParameterValue(typeName, valueName);
+    }
+
+    @Override
+    public List<Product> filterByParameterValue(List<Product> products, ParameterValue parameterValue) {
+        return products.stream()
+                .filter(product -> product.getParameters().contains(parameterValue))
+                .collect(Collectors.toList());
     }
 
 

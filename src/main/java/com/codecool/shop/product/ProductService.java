@@ -1,5 +1,6 @@
 package com.codecool.shop.product;
 
+import com.codecool.shop.product.parameter.ParameterValue;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface ProductService {
     void addParameters(String productTitle, String parameterTypeName, String[] parameterValues);
 
     Product getById(Integer id);
+
+    List<Product> getProducts(ParameterValue parameterValue);
 }

@@ -3,6 +3,7 @@ package com.codecool.shop.supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,12 +22,12 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
-    public Supplier findById(int id) {
+    public Supplier findById(int id) throws EntityNotFoundException {
         Optional<Supplier> result = supplierRepository.findById(id);
         if (result.isPresent()) {
             return result.get();
         } else {
-            throw new RuntimeException("Did not find Supplier with id: " + id);
+            throw new EntityNotFoundException("Did not find Supplier with id: " + id);
         }
     }
 

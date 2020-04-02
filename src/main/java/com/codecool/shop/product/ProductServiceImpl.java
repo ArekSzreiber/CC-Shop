@@ -5,6 +5,7 @@ import com.codecool.shop.product.parameter.ParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,7 +13,6 @@ import java.util.Optional;
 public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
     private ParameterService parameterService;
-//    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository,
@@ -33,15 +33,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getByTitle(String title) {
-        Product p = productRepository.findByTitle(title);
-        if (p == null) {
-            try {
-                throw new Exception("Could not find Product with title: " + title);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        Product product = productRepository.findByTitle(title);
+        if (product == null) {
+            throw new EntityNotFoundException("Could not find Product with title: " + title);
+
         }
-        return p;
+        return product;
     }
 
     @Override
@@ -57,9 +54,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void addParameters(String productTitle, String parameterTypeName, String[] parameterNames) {
         Product product = productRepository.findByTitle(productTitle);
-        if (product.hasParameters()) {
-            return;
-        }
         for (String parameterName : parameterNames) {
             ParameterValue parameterValue = parameterService.findParameterValue(parameterTypeName, parameterName);
             product.addParameter(parameterValue);
@@ -71,6 +65,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getById(Integer id) {
         return productRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Product> getProducts(ParameterValue parameterValue) {
+        //todo just retrieve proper  Products from DB
+        return parameterService.filterByParameterValue(productRepository.findAll(), parameterValue);
+
+
     }
 
 

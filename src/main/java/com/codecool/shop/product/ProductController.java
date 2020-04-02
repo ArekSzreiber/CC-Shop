@@ -1,10 +1,9 @@
 package com.codecool.shop.product;
 
+import com.codecool.shop.product.parameter.ParameterService;
+import com.codecool.shop.product.parameter.ParameterValue;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,15 +13,24 @@ import java.util.Optional;
 public class ProductController {
 
     private ProductService productService;
+    private ParameterService parameterService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService,
+                             ParameterService parameterService) {
         this.productService = productService;
+        this.parameterService = parameterService;
     }
 
     @GetMapping("/products")
-    public List<Product> getProducts() {
-        return this.productService.getAllProducts();
+    public List<Product> getProducts(@RequestParam(required = false, name = "f") String filter) {
+        if (filter == null) {
+            return this.productService.getAllProducts();
+        } else {
+            ParameterValue parameterValue = parameterService.findParameterValue(filter);
+            return productService.getProducts(parameterValue);
+
+        }
     }
 
     @GetMapping("/products/{id}")

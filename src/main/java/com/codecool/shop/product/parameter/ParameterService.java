@@ -1,6 +1,9 @@
 package com.codecool.shop.product.parameter;
 
+import com.codecool.shop.product.Product;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface ParameterService {
@@ -11,5 +14,7 @@ public interface ParameterService {
 
     ParameterValue findParameterValue(String parameterTypeName, String parameterValue);
 
-    boolean parametersNotEmpty();
+    ParameterValue findParameterValue(String filter);
+
+    List<Product> filterByParameterValue(List<Product> products, ParameterValue parameterValue);
 }

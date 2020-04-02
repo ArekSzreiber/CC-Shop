@@ -6,10 +6,14 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.logging.Logger;
+
 @Component
 @Order(2)
 public class ProductInitializer implements ApplicationListener<ApplicationReadyEvent> {
     private ProductService prodSer;
+    private static final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
 
     @Autowired
     public ProductInitializer(ProductService productService) {
@@ -61,7 +65,7 @@ public class ProductInitializer implements ApplicationListener<ApplicationReadyE
         prodSer.addParameters("Maxi-Grip", "diameter", "27.5");
         prodSer.addParameters("Maxi-Grip", "surface", new String[]{"loose", "hardpack", "allround"});
         prodSer.addParameters("Maxi-Grip", "color", new String[]{"black",});
-        prodSer.addParameters("Aerostunt", "diameter","26");
+        prodSer.addParameters("Aerostunt", "diameter", "26");
         prodSer.addParameters("Aerostunt", "surface", new String[]{"road", "hardpack", "allround"});
         prodSer.addParameters("Aerostunt", "color", new String[]{"black", "orange"});
         prodSer.addParameters("Vortex", "diameter", "29");
@@ -76,7 +80,7 @@ public class ProductInitializer implements ApplicationListener<ApplicationReadyE
         prodSer.addParameters("Mountain Chamois", "diameter", "29");
         prodSer.addParameters("Mountain Chamois", "surface", new String[]{"mud", "loose", "hardpack", "downhill", "allround"});
         prodSer.addParameters("Mountain Chamois", "color", "black");
-        prodSer.addParameters("Mountain Crawler", "diameter","27.5");
+        prodSer.addParameters("Mountain Crawler", "diameter", "27.5");
         prodSer.addParameters("Mountain Crawler", "surface", new String[]{"mud", "loose", "hardpack", "downhill", "allround"});
         prodSer.addParameters("Mountain Crawler", "color", "black");
         prodSer.addParameters("Forest Mouse", "diameter", "26");
@@ -85,9 +89,10 @@ public class ProductInitializer implements ApplicationListener<ApplicationReadyE
         prodSer.addParameters("Sand Shrew", "diameter", "27.5");
         prodSer.addParameters("Sand Shrew", "surface", new String[]{"hardpack", "allround", "loose"});
         prodSer.addParameters("Sand Shrew", "color", "black");
-        prodSer.addParameters("Sand Rat", "diameter","29");
+        prodSer.addParameters("Sand Rat", "diameter", "29");
         prodSer.addParameters("Sand Rat", "surface", new String[]{"mud", "loose", "hardpack", "allround"});
         prodSer.addParameters("Sand Rat", "color", "black");
+        logger.info("Bike parts parameters initialized");
     }
 }
 
